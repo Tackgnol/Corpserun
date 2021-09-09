@@ -1,0 +1,30 @@
+.skull-container {
+    background-image: url("../../../../assets/StatsPage/Skull.png");
+    height: 25vh;
+    width: 25vh;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.skull-hp {
+    font-family: MonAmourFraktur-Broken;
+    color: black;
+    font-size: 5vh;
+    margin-top: 20%;
+
+}
+
+.right-eye {
+    text-align: left;
+}
+
+
+.left-eye {
+    margin-right: 10%;
+    text-align: right;
+}
+
+.row-center {
+    padding-top: 43%;
+}

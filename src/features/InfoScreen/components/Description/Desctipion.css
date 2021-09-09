@@ -1,0 +1,25 @@
+.description-main {
+    width: 100%;
+    align-items: center;
+}
+
+.description-info__top {
+    box-sizing: border-box;
+    border: none;
+    font-size: 15px;
+    background: transparent;
+    width: 80%;
+    min-height:15vh;
+    height:auto;
+}
+
+.description-info__bot {
+    box-sizing: border-box;
+    border: none;
+    font-size: 15px;
+    width: 100%;
+    height: 100%;
+    padding-right: 10px;
+    background: transparent;
+    min-height: 27vh;
+}

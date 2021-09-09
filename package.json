@@ -10,9 +10,18 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/react-redux": "^7.1.18",
+    "bootstrap": "^5.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
     "react-scripts": "4.0.3",
+    "react-select": "^4.3.1",
+    "react-textarea-autosize": "^8.3.3",
+    "react-tooltip": "^4.2.21",
+    "redux": "^4.1.0",
+    "redux-devtools-extension": "^2.13.9",
+    "ts-node": "^10.1.0",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
@@ -20,7 +29,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "convert": "tsc  src/scripts/rationalize.ts && node src/scripts/rationalize.js "
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +49,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-select": "^4.0.17",
+    "prettier": "2.3.2"
   }
 }

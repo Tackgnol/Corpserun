@@ -1,0 +1,8 @@
+.description-name {
+    box-sizing: border-box;
+    border: none;
+    font-family: MonAmourFraktur-Broken;
+    font-size: 4vh;
+    background: transparent;
+    text-align: center;
+}

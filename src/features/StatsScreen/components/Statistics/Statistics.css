@@ -1,0 +1,22 @@
+.statistics-background {
+    background-image: url("../../../../assets/StatsPage/Skulls.png");
+    height: 75vh;
+    width: 75vh;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.statistics-split__first {
+    padding-top: 8%;
+}
+
+.statistics-split__second {
+    margin-top: 2%;
+}
+
+
+.statistics-split__third {
+    margin-top: 8%;
+}
+

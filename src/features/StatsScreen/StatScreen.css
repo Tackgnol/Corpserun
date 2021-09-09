@@ -1,0 +1,9 @@
+.stat-page {
+    background-repeat: no-repeat;
+    background-image: url("../../assets/StatsPage/Background.png");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
