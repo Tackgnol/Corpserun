@@ -9,7 +9,7 @@
     font-size: 15px;
     background: transparent;
     width: 80%;
-    min-height:15vh;
+    min-height:200px;
     height:auto;
 }
 
@@ -21,5 +21,5 @@
     height: 100%;
     padding-right: 10px;
     background: transparent;
-    min-height: 27vh;
+    min-height: 320px;
 }

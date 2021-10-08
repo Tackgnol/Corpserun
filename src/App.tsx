@@ -9,47 +9,64 @@ import { rollOnTable } from './utils/rollOnTable';
 import { classes } from './data/classes';
 import { GenerateCharacter } from './classes/GenerateCharacter';
 import { StatScreen } from './features/StatsScreen/StatScreen.container';
+import { EquipmentScreen } from './features/EquipmentScreen';
+import { HPActions } from './redux/actions/hp.actions';
+import { useEffect } from 'react';
 
 function App() {
     const statDispatch = useDispatch<Dispatch<StatActions>>();
     const infoDispatch = useDispatch<Dispatch<InfoActions>>();
+    const hpDispatch = useDispatch<Dispatch<HPActions>>();
     const equipmentDispatch = useDispatch<Dispatch<EquipmentActions>>();
-    const template = rollOnTable(classes);
-    if (template) {
-        const generator = new GenerateCharacter(template);
-        const character = generator.generate();
-        statDispatch({ type: 'SET_STAT', payload: character.stats });
-        infoDispatch({ type: 'SET_NAME', payload: character.info.name });
-        infoDispatch({
-            type: 'SET_DESCRIPTION',
-            payload: `${character.info.description} ${
-                character.info.classDescription ?? ''
-            }`,
-        });
-        infoDispatch({
-            type: 'SET_ABILITIES',
-            payload: character.abilities ?? '',
-        });
-        infoDispatch({
-            type: 'SET_CLASS_NAME',
-            payload: character.info.characterClass ?? '',
-        });
-        const { equipment } = character;
-        equipmentDispatch({ type: 'SET_ITEMS', payload: equipment });
-        equipmentDispatch({
-            type: 'UPDATE_SILVER',
-            payload: character.silver,
-        });
-    }
+    useEffect(() => {
+        const template = rollOnTable(classes);
+        if (template) {
+            const generator = new GenerateCharacter(template);
+            const character = generator.generate();
+            statDispatch({ type: 'SET_STAT', payload: character.stats });
+            infoDispatch({ type: 'SET_NAME', payload: character.info.name });
+            infoDispatch({
+                type: 'SET_DESCRIPTION',
+                payload: `${character.info.description} ${
+                    character.info.classDescription ?? ''
+                }`,
+            });
+            infoDispatch({
+                type: 'SET_ABILITIES',
+                payload: character.abilities ?? [],
+            });
+            infoDispatch({
+                type: 'SET_CLASS_NAME',
+                payload: character.info.characterClass ?? '',
+            });
+            hpDispatch({
+                type: 'SET_HEALTH',
+                payload: {
+                    currHP: character.stats.maxHP,
+                    wounded: false,
+                    dead: false,
+                },
+            });
+            const { equipment } = character;
+            equipmentDispatch({ type: 'SET_ITEMS', payload: equipment });
+            equipmentDispatch({
+                type: 'UPDATE_SILVER',
+                payload: character.silver,
+            });
+        }
+    });
 
     return (
-        <div className="page">
+        <div className="container g-0">
             <div className="row g-0">
-                <div className="col col-sm-12 col-md-6">
+                <div className="col-12">
                     <StatScreen />
                 </div>
-                <div className="col col-sm-12 col-md-6">
+                <div className="col-sm-12 col-md-12 col-lg-12 col-xl-6">
                     <InfoScreen />
+                </div>
+                <div className="col-sm-12 col-md-12 col-lg-12 col-xl-6 h-auto">
+                    <EquipmentScreen />
                 </div>
             </div>
         </div>

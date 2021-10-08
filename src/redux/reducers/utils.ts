@@ -1,25 +1,9 @@
 import { Dice, rollDie } from '../../utils/rollDie';
 import { getModifier } from '../../utils/modifiers';
-import { Health, Stats } from '../../models';
+import { Health } from '../../models';
 
-export const newStats = (
-    state: Stats,
-    newStat: { [name in keyof Stats]: number }
-): Stats => {
-    const statNames = Object.keys(newStat);
-    const toughnessIndex = statNames.indexOf('toughness');
-    if (toughnessIndex !== -1) {
-        const hp = rollDie(Dice.d8) + getModifier(newStat['toughness']);
-        return {
-            ...state,
-            ...newStat,
-            maxHP: hp <= 0 ? 1 : hp,
-        };
-    }
-    return {
-        ...state,
-        ...newStat,
-    };
+export const rollMaxHP = (toughness: number): number => {
+    return rollDie(Dice.d8) + getModifier(toughness);
 };
 
 export const living = (diff: number, currentHP?: number): Partial<Health> => {

@@ -86,7 +86,7 @@ export interface Character {
     info: Info;
     stats: Stats;
     equipment: Equipment[];
-    abilities?: string;
+    abilities?: Ability[];
     silver: number;
 }
 
@@ -101,7 +101,8 @@ export type Info = {
     description: string;
     characterClass?: string;
     classDescription?: string;
-    abilities?: string;
+    abilities: Ability[];
+    abilitiesString?: string;
 };
 
 export type Stats = {
@@ -131,5 +132,14 @@ export type RollStat = {
 export interface Ability {
     name: string;
     description: string;
+    dice?: Dice;
+    difficulty?: number;
     roll?: number;
 }
+
+export interface ItemModalValues {
+    itemPosition: number;
+    unequipWhat?: EquipableType;
+}
+
+export type EquipableType = 'primaryWeapon' | 'secondaryWeapon' | 'armor';

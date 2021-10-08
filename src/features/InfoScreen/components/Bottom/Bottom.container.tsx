@@ -6,7 +6,7 @@ import { Dispatch } from 'redux';
 import { InfoActions } from '../../../../redux/actions/info.actions';
 
 export const Bottom: FC = () => {
-    const { abilities, classDescription, characterClass } = useSelector(
+    const { abilitiesString, classDescription, characterClass } = useSelector(
         (state: AppState) => state.info
     );
     const infoDispatch = useDispatch<Dispatch<InfoActions>>();
@@ -24,14 +24,14 @@ export const Bottom: FC = () => {
         const {
             target: { value },
         } = e;
-        infoDispatch({ type: 'SET_ABILITIES', payload: value });
+        infoDispatch({ type: 'EDIT_ABILITIES', payload: value });
     };
 
     return (
         <BottomComponent
             characterClass={characterClass}
-            abilities={abilities}
-            classDescription={classDescription}
+            abilities={abilitiesString ?? ''}
+            classDescription={classDescription ?? ''}
             onInputChange={handleInputChange}
             onTextAreaChange={handleTextAreaChange}
         />

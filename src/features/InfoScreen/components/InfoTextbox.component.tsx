@@ -6,7 +6,7 @@ export interface InfoTextboxProps {
     onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     tabIndex: number;
     className?: string;
-    value: string;
+    value: string | undefined;
 }
 
 export const InfoTextbox: FC<InfoTextboxProps> = ({
@@ -22,8 +22,7 @@ export const InfoTextbox: FC<InfoTextboxProps> = ({
             className={className ?? 'description-info'}
             tabIndex={tabIndex}
             onChange={onChange}
-        >
-            {value}
-        </TextareaAutosize>
+            value={value}
+        />
     );
 };

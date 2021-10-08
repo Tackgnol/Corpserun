@@ -2,7 +2,8 @@
     box-sizing: border-box;
     border: none;
     font-family: MonAmourFraktur-Broken;
-    font-size: 4vh;
+    font-size: 24px;
     background: transparent;
     text-align: center;
+    text-decoration-line: underline;
 }

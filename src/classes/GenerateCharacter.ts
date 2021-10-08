@@ -19,14 +19,9 @@ import {
     rollOnTable,
     rollOnTableString,
 } from '../utils/rollOnTable';
-import {
-    findItem,
-    generateAbilities,
-    generateDescription,
-    getScroll,
-} from './utils';
+import { findItem, generateDescription, getScroll } from './utils';
 import { getModifier } from '../utils/modifiers';
-import { newStats } from '../redux/reducers/utils';
+import { rollMaxHP } from '../redux/reducers/utils';
 
 export class GenerateCharacter implements CharacterGenerator {
     private info?: Info;
@@ -59,7 +54,7 @@ export class GenerateCharacter implements CharacterGenerator {
                 stats: this.stats,
                 info: this.info,
                 equipment: this.equipment ?? [],
-                abilities: generateAbilities(this.abilities ?? []),
+                abilities: this.abilities ?? [],
                 silver: this.silver,
             };
         }
@@ -73,7 +68,7 @@ export class GenerateCharacter implements CharacterGenerator {
                 [curr.name]: rollMultiDie(curr.dice) + (curr?.modifier ?? 0),
             };
         }, this.stats);
-        this.stats.maxHP = newStats(this.stats, this.stats).maxHP;
+        this.stats.maxHP = rollMaxHP(this.stats.toughness);
     }
 
     private rollInfo() {
@@ -101,6 +96,7 @@ export class GenerateCharacter implements CharacterGenerator {
             ),
             classDescription: `\nYour past: \n${rollOnTableString(origins)}`,
             characterClass: className,
+            abilities: this.abilities ?? [],
         };
     }
 

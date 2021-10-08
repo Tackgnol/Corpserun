@@ -5,7 +5,7 @@ export interface InfoInputProps {
     id: string;
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
     tabIndex: number;
-    value: string;
+    value: string | undefined;
 }
 
 export const InfoInput: FC<InfoInputProps> = ({

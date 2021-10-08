@@ -26,7 +26,7 @@ export const DescriptionComponent: FC<DescriptionComponentProps> = ({
     return (
         <div className="description-main align-items-center">
             <div className="row">
-                <div className={colClassName}>
+                <div className={`${colClassName} offset-xl-5`}>
                     <InfoInput
                         id="x"
                         onChange={onInputChange}
@@ -36,7 +36,7 @@ export const DescriptionComponent: FC<DescriptionComponentProps> = ({
                 </div>
             </div>
             <br />
-            <div className="row">
+            <div className="pt-4">
                 <div className={colClassName}>
                     <InfoTextbox
                         id="x"

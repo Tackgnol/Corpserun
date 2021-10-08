@@ -4,20 +4,18 @@
 
 #root {
   height: 100%;
-  max-width: 1333px;
 }
 
 .page {
   overflow: auto;
   padding: 0px;
-  max-width: 1333px;
+  min-height: 640px;
 }
 
 html  {
   height: 100%;
   width: 100%;
   overflow: auto;
-  max-width: 1333px;
   margin: auto;
   background: -webkit-linear-gradient(to right, rgba(0, 0, 0, 1), rgba(255, 255, 255, 1));
   background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(255, 255, 255, 1));
@@ -28,9 +26,23 @@ body {
   width: 100%;
   overflow: auto;
   margin: auto;
-  max-width: 1333px;
+  background-color: rgb(255, 233, 0);
 }
 
 .yellow-outline {
   text-shadow: -1px -1px 0 #ffea00, 1px -1px 0 #ffea00, -1px 1px 0 #ffea00, 1px 1px 0 #ffea00;
+}
+
+.white-outline {
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+}
+
+@font-face {
+  font-family: 'MonAmourFraktur-Broken';
+  src: local('MonAmourFraktur-Broken'), url(./assets/fonts/MonAmourFraktur-Broken.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Alegreya';
+  src: local('Alegreya'), url(./assets/fonts/Alegreya-VariableFont_wght.ttf) format('truetype');
 }

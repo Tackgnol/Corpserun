@@ -24,7 +24,7 @@ export const BottomComponent: FC<BottomComponentProps> = ({
                 textBoxValue={`${
                     classDescription ? classDescription + '\n' : ''
                 }${abilities}`}
-                colClassName="col offset-3 col-9"
+                colClassName="col offset-3 col-8"
                 onInputChange={onInputChange}
                 onTextAreaChange={onTextAreaChange}
                 textBoxClassName="description-info__bot"

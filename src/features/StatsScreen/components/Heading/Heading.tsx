@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
-import { SkullComponent } from './Skull.component';
+
+import { Skull } from './Skull.container';
 
 export const Heading: FC = () => {
-    return <SkullComponent maxHP={11} currHP={9} />;
+    return <Skull />;
 };

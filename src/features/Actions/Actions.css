@@ -1,0 +1,39 @@
+.actions-background {
+    background-repeat: no-repeat;
+    background-image: url("../../assets/Actions/Background.png");
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+}
+
+.actions-header {
+    font-size: 55px;
+    font-family: MonAmourFraktur-Broken;
+    color: white;
+}
+
+.action-background {
+    background-repeat: no-repeat;
+    background-image: url("../../assets/Actions/ActionHolder.png");
+    background-size: 100% 100%;
+    background-position: center;
+    width: 70%;
+    margin: auto;
+    min-height: 50px;
+
+}
+
+.action-name {
+    font-family: Alegreya;
+    font-size: 22px;
+    align-self: center;
+    margin: 10px;
+    float: left;
+    line-height: 28px;
+}
+
+.action-dice {
+    height: 28px;
+    float: right;
+    margin: 10px;
+}

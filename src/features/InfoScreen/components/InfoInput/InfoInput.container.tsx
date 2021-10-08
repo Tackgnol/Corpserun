@@ -7,6 +7,7 @@ import { Dispatch } from 'redux';
 import { InfoInput } from './InfoInput.component';
 import { InfoTextbox } from '../InfoTextbox.component';
 import { Info } from '../../../../models';
+import { generateAbilities } from '../../../../classes/utils';
 
 export interface InfoInputContainerProps {
     id: string;
@@ -20,7 +21,13 @@ export const InfoInputContainer: FC<InfoInputContainerProps> = ({
     field,
 }) => {
     const { info } = useSelector((state: AppState) => state);
-    const value = info[field];
+    let value: string | undefined;
+    if (field === 'abilities') {
+        value = info.abilitiesString;
+    } else {
+        value = info[field];
+    }
+
     const infoDispatch = useDispatch<Dispatch<InfoActions>>();
     const handleChange = (
         e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

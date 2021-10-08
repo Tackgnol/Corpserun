@@ -11,14 +11,14 @@ export const StatisticsInput: FC<StatisticInputProps> = ({
     onChange,
 }) => {
     return (
-        <div className="col col-2 d-flex justify-content-center statistic-input__background">
+        <div className="col col-4 col-xl-3 d-flex justify-content-center statistic-input__background">
             <input
-                className="statistic-input align-self-center"
+                className="statistic-input text-center"
                 type="number"
                 value={value}
                 onChange={onChange}
             />
-            <div className={`statistic-modifier`}>
+            <div className="statistic-modifier">
                 {formatModifier(getModifier(value))}
             </div>
         </div>

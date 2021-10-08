@@ -1,5 +1,4 @@
 import { StatActions } from '../actions/stat.actions';
-import { newStats } from './utils';
 import { Stats } from '../../models';
 
 const initialState: Stats = {
@@ -15,7 +14,7 @@ const StatReducer = (state: Stats = initialState, action: StatActions) => {
         case 'SET_STAT':
             return {
                 ...state,
-                ...newStats(state, action.payload),
+                ...action.payload,
             };
         default:
             return state;

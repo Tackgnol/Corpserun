@@ -1,7 +1,14 @@
 import { InfoActions } from '../actions/info.actions';
 import { Info } from '../../models';
+import { generateAbilities } from '../../classes/utils';
 
-const InfoReducer = (state: Info, action: InfoActions) => {
+const initialState: Info = {
+    description: '',
+    name: '',
+    abilities: [],
+};
+
+const InfoReducer = (state = initialState, action: InfoActions) => {
     switch (action.type) {
         case 'SET_NAME':
             return {
@@ -17,6 +24,12 @@ const InfoReducer = (state: Info, action: InfoActions) => {
             return {
                 ...state,
                 abilities: action.payload,
+                abilitiesString: generateAbilities(action.payload ?? []),
+            };
+        case 'EDIT_ABILITIES':
+            return {
+                ...state,
+                abilitiesString: action.payload,
             };
         case 'SET_CLASS_NAME':
             return {

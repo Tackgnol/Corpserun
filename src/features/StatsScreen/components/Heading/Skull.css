@@ -1,30 +1,58 @@
 .skull-container {
     background-image: url("../../../../assets/StatsPage/Skull.png");
-    height: 25vh;
-    width: 25vh;
+    height: 185px;
+    width: 75%;
     margin: auto;
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
 }
 
 .skull-hp {
     font-family: MonAmourFraktur-Broken;
     color: black;
-    font-size: 5vh;
-    margin-top: 20%;
+    font-size: 40px;
+    height: 100%;
+}
 
+.hp-container {
+    padding-top: 72px;
 }
 
 .right-eye {
+    margin-left: 5px;
+    vertical-align: middle;
     text-align: left;
 }
 
 
 .left-eye {
-    margin-right: 10%;
+    margin-right: 2px;
+    vertical-align: middle;
     text-align: right;
 }
 
 .row-center {
     padding-top: 43%;
+}
+
+.red {
+    -webkit-filter: invert(40%) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(2);
+    filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+}
+
+.plus {
+    background-image: url("../../../../assets/StatsPage/Plus.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    cursor: pointer;
+}
+
+.minus {
+    background-image: url("../../../../assets/StatsPage/Minus.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left;
+    cursor: pointer;
 }

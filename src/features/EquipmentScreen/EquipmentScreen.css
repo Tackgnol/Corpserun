@@ -1,0 +1,229 @@
+.equipment-page {
+    background: url("../../assets/EquipmentPage/Background.png");
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-image: url("../../assets/Border.png");
+    border-image-width: 20px;
+    padding: 0
+}
+
+.mainhand-background {
+    background: url("../../assets/EquipmentPage/Mainhand.png");
+    width: 100%;
+    height: 90px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: bottom;
+    cursor: pointer;
+}
+
+.mainhand-header {
+    font-family: MonAmourFraktur-Broken;
+    font-size: 32px;
+    margin-left: 10px;
+    padding-bottom: 10px;
+    height: 53%;
+}
+
+.mainhand-text {
+    font-family: Alegreya;
+    font-size: 22px;
+    margin-left: 10px;
+}
+
+.offhand-background {
+    background: url("../../assets/EquipmentPage/Offhand.png");
+    width: 100%;
+    height: 90px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+    margin-top: -20px;
+    cursor: pointer;
+}
+
+.offhand-header {
+    font-family: MonAmourFraktur-Broken;
+    font-size: 32px;
+    margin-right: 10px;
+    padding-bottom: 10px;
+    height: 55%;
+}
+
+.offhand-text {
+    font-family: Alegreya;
+    font-size: 22px;
+    float: right;
+    margin-top: -10px;
+    margin-right: 10px;
+}
+
+.armor-background {
+    background: url("../../assets/EquipmentPage/Armor.png");
+    width: 100%;
+    height: 90px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+    margin-top: -20px;
+    cursor: pointer;
+}
+
+.armor-header {
+    font-family: MonAmourFraktur-Broken;
+    font-size: 32px;
+    margin-right: 45%;
+    padding-bottom: 10px;
+    height: 55%;
+}
+
+.armor-text {
+    font-family: Alegreya;
+    font-size: 15px;
+    margin-right: 45%;
+}
+
+.silver-background {
+    background: url("../../assets/EquipmentPage/Silver.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: bottom;
+    width: 100px;
+    height: 50px;
+}
+
+.equipment-header {
+    font-size: 40px;
+    font-family: MonAmourFraktur-Broken;
+}
+
+.silver-container {
+    height: 100%;
+}
+
+.silver-header {
+    font-size: 32px;
+    font-family: MonAmourFraktur-Broken;
+}
+
+
+.silver-input {
+    box-sizing: border-box;
+    width: 40px;
+    border: none;
+    padding: 0;
+    font-family: MonAmourFraktur-Broken;
+    font-size: 20px;
+    margin-left: 40%;
+    margin-top: 10%;
+    background: transparent ;
+}
+
+.items-container {
+    min-height: 500px;
+}
+
+.item-background {
+    background: url("../../assets/EquipmentPage/Item.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    min-height: 75px;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+.item-title {
+    font-family: Alegreya;
+    font-size: 22px;
+    margin-left: 15px;
+    margin-top: 20px;
+}
+
+.item-description {
+    font-family: Alegreya;
+    font-size: 15px;
+    margin-left: 15px;
+}
+
+.item-modal-name {
+    font-family: MonAmourFraktur-Broken;
+    font-size: 42px;
+}
+
+.item-modal-description__big {
+    font-family: Alegreya;
+    font-size: 35px;
+}
+
+.item-modal-description__small {
+    font-family: Alegreya;
+    font-size: 25px;
+}
+
+.item-modal-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-left: 5%;
+    width: 90%;
+}
+
+.item-modal-separator {
+    background: url("../../assets/Modal/Separator.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    height: 38px;
+    content: " ";
+    display:inline-block;
+    width: 100%;
+}
+
+.item-drop {
+    background: url("../../assets/EquipmentPage/Drop.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    height: 100px;
+    cursor: pointer;
+}
+
+.item-sell {
+    background: url("../../assets/EquipmentPage/Sell.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    height: 100px;
+    cursor: pointer;
+}
+
+.item-equip {
+    background: url("../../assets/EquipmentPage/Equip.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    height: 100px;
+    cursor: pointer;
+}
+
+.item-action {
+    font-family: MonAmourFraktur-Broken;
+    font-size: 20px;
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+}
+
+.item-action-container {
+    width: 100%;
+}
+.item-info-container {
+    margin-top: 25px;
+    flex-direction: column;
+}

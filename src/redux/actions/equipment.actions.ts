@@ -1,13 +1,13 @@
 import { Equipment } from '../../models';
 
-export interface EquipPrimary {
-    readonly type: 'EQUIP_PRIMARY';
+export interface EquipWeapon {
+    readonly type: 'EQUIP_WEAPON';
     payload: number;
 }
 
-export interface EquipSecondary {
-    readonly type: 'EQUIP_SECONDARY';
-    payload: number;
+export interface UnequipWeapon {
+    readonly type: 'UNEQUIP_WEAPON';
+    payload: 'primaryWeapon' | 'secondaryWeapon';
 }
 
 export interface DropItem {
@@ -35,6 +35,10 @@ export interface EquipArmor {
     payload: number;
 }
 
+export interface UnequipArmor {
+    readonly type: 'UNEQUIP_ARMOR';
+}
+
 export interface EquipScroll {
     readonly type: 'EQUIP_SCROLL';
     payload: number;
@@ -46,12 +50,13 @@ export interface SetItems {
 }
 
 export type EquipmentActions =
-    | EquipPrimary
-    | EquipSecondary
+    | EquipWeapon
+    | UnequipWeapon
     | DropItem
     | SellItem
     | GainItem
     | UpdateSilver
     | EquipArmor
+    | UnequipArmor
     | EquipScroll
     | SetItems;

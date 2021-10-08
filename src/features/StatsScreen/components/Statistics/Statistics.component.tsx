@@ -37,7 +37,7 @@ export const Statistics: FC<Omit<Stats, 'maxHP'>> = ({
                 </div>
             </div>
             <div className="row justify-content-center">
-                <div className="offset-5 col col-7">
+                <div className="offset-7 col col-7 statistic-omens">
                     <OmensComponent count={2} />
                 </div>
             </div>
