@@ -14,7 +14,7 @@ export const Item: FC<ItemProps> = ({ position }) => {
     const { items } = useSelector((state: AppState) => state.equipment);
     const item = typeof position !== 'undefined' ? items[position] : undefined;
     const handleClick = () => {
-        modalDispatcher({ type: 'SHOW_MODAL', payload: { position } });
+        modalDispatcher({ type: 'SHOW_ITEM_MODAL', payload: { position } });
     };
     return <ItemComponent item={item} onClick={handleClick} />;
 };

@@ -13,7 +13,7 @@ export const Offhand: FC = () => {
     const modalDispatcher = useDispatch<Dispatch<ItemModalActions>>();
     const handleClick = () => {
         modalDispatcher({
-            type: 'SHOW_MODAL',
+            type: 'SHOW_ITEM_MODAL',
             payload: {
                 position: -1,
                 equipWhat: 'secondaryWeapon',

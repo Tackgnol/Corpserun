@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from '../../../../redux/reducers/root.reducer';
 import { Dispatch } from 'redux';
 import { EquipmentActions } from '../../../../redux/actions/equipment.actions';
-import { ModalTemplate } from '../../../../components/modal/Modal';
+import { ModalTemplate } from '../../../../components/Modal/Modal';
 import { ItemModalActions } from '../../../../redux/actions/itemModal.actions';
 
 export const ItemModal: FC = () => {
@@ -23,7 +23,7 @@ export const ItemModal: FC = () => {
     const modalDispatch = useDispatch<Dispatch<ItemModalActions>>();
 
     const handleClose = () => {
-        modalDispatch({ type: 'HIDE_MODAL' });
+        modalDispatch({ type: 'HIDE_ITEM_MODAL' });
     };
 
     const handleSell = () => {
@@ -66,7 +66,7 @@ export const ItemModal: FC = () => {
     const isArmor = currentItem?.tags.includes('armor');
     const equipable = isArmor || isWeapon;
     return (
-        <ModalTemplate show={show} onClose={handleClose}>
+        <ModalTemplate show={show} onClose={handleClose} type="item">
             <ItemModalComponent
                 item={currentItem}
                 onDrop={handleDrop}

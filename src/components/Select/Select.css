@@ -1,0 +1,39 @@
+.mb_select__control {
+    border: none !important;
+    box-shadow: none;
+    outline: none;
+}
+
+.mb_select__control:hover {
+    border: none !important;
+    box-shadow: none;
+}
+
+.mb_select__value-container {
+    font-family: Alegreya;
+    font-size: 22px;
+    color: #0e1319 !important;
+}
+
+.mb_select__indicator {
+}
+
+.mb_select__menu {
+    font-family: Alegreya;
+    font-size: 22px;
+}
+
+.mb_select__menu-list {
+
+}
+
+.mb_select__option {
+
+}
+
+.mb_select {
+    font-family: Alegreya;
+    width: 90%;
+    height: 90%;
+    margin: 5px auto;
+}

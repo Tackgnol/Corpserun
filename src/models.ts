@@ -142,4 +142,9 @@ export interface ItemModalValues {
     unequipWhat?: EquipableType;
 }
 
+export interface ActionText {
+    header: string;
+    damageText?: string;
+}
+
 export type EquipableType = 'primaryWeapon' | 'secondaryWeapon' | 'armor';

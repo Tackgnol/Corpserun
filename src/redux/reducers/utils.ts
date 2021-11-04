@@ -9,7 +9,6 @@ export const rollMaxHP = (toughness: number): number => {
 export const living = (diff: number, currentHP?: number): Partial<Health> => {
     if (typeof currentHP !== 'undefined') {
         const newHP = currentHP + diff;
-        console.log(newHP, currentHP, diff);
         if (newHP === 0) {
             return {
                 currHP: newHP,

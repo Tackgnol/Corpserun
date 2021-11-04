@@ -37,3 +37,9 @@
     float: right;
     margin: 10px;
 }
+
+.action-modal {
+    min-height: 470px;
+    padding-top: 25%;
+    margin: 10px 10px;
+}

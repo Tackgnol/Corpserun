@@ -7,7 +7,9 @@ interface ItemsComponentProps {
 }
 
 export const ItemsComponent: FC<ItemsComponentProps> = ({ items }) => {
-    const renderedItems = items.map((item, index) => <Item position={index} />);
+    const renderedItems = items.map((item, index) => (
+        <Item position={index} key={item.name} />
+    ));
 
     return (
         <div className="items-container">

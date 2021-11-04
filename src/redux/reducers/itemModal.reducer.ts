@@ -19,7 +19,7 @@ const ItemModalReducer = (
     action: ItemModalActions
 ) => {
     switch (action.type) {
-        case 'SHOW_MODAL':
+        case 'SHOW_ITEM_MODAL':
             return {
                 ...state,
                 show: true,
@@ -27,7 +27,7 @@ const ItemModalReducer = (
                 equipWhat: action.payload.equipWhat,
                 item: action.payload.item,
             };
-        case 'HIDE_MODAL':
+        case 'HIDE_ITEM_MODAL':
             return {
                 ...state,
                 show: false,
