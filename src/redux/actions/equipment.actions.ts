@@ -10,6 +10,11 @@ export interface UnequipWeapon {
     payload: 'primaryWeapon' | 'secondaryWeapon';
 }
 
+export interface LoseWeapon {
+    readonly type: 'LOSE_WEAPON';
+    payload: 'primaryWeapon' | 'secondaryWeapon';
+}
+
 export interface DropItem {
     readonly type: 'DROP_ITEM';
     payload: number;
@@ -59,4 +64,5 @@ export type EquipmentActions =
     | EquipArmor
     | UnequipArmor
     | EquipScroll
-    | SetItems;
+    | SetItems
+    | LoseWeapon;

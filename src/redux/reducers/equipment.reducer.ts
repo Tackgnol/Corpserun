@@ -141,6 +141,18 @@ const EquipmentReducer = (
                 ...state,
                 items: action.payload,
             };
+        case 'LOSE_WEAPON': {
+            if (action.payload === 'primaryWeapon') {
+                return {
+                    ...state,
+                    primaryWeapon: null,
+                };
+            }
+            return {
+                ...state,
+                secondaryWeapon: null,
+            };
+        }
         default:
             return { ...state } as PlayerEquipment;
     }

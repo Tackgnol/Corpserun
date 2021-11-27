@@ -25,7 +25,6 @@ import { rollMaxHP } from '../redux/reducers/utils';
 
 export class GenerateCharacter implements CharacterGenerator {
     private info?: Info;
-    private health?: Health;
     private stats: Stats = {
         maxHP: 0,
         strength: 0,
@@ -94,7 +93,7 @@ export class GenerateCharacter implements CharacterGenerator {
                 this.tale?.name,
                 this.disfigurement
             ),
-            classDescription: `\nYour past: \n${rollOnTableString(origins)}`,
+            classDescription: `\nYour past: \n\t${rollOnTableString(origins)}`,
             characterClass: className,
             abilities: this.abilities ?? [],
         };

@@ -21,7 +21,7 @@ export const ItemComponent: FC<ItemProps> = ({ item, onClick }) => {
     return (
         <div className="row">
             <div className="item-background col-12">
-                <div className="item-title ms-lg-4 ms-2" onClick={onClick}>
+                <div className="item-title ms-lg-5 ms-3" onClick={onClick}>
                     {item.name}
                     {amount} {item.description}
                 </div>

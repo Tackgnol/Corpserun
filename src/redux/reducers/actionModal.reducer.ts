@@ -1,15 +1,18 @@
 import { ActionModalActions } from '../actions/actionModal.actions';
+import { ModalType } from '../../models';
 
 interface ActionModalState {
     show: boolean;
     header: string;
-    damageText: string;
+    text: string;
+    type: ModalType;
 }
 
 const initialState = {
     show: false,
     header: '',
-    damageText: '',
+    text: '',
+    type: ModalType.attack,
 };
 const ActionModalReducer = (
     state: ActionModalState = initialState,
@@ -20,8 +23,9 @@ const ActionModalReducer = (
             return {
                 ...state,
                 show: true,
-                damageText: action.payload.damageText,
+                text: action.payload.text,
                 header: action.payload.header,
+                type: action.payload.type,
             };
         case 'HIDE_ACTION_MODAL':
             return {

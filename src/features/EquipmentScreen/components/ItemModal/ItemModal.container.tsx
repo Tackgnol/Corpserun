@@ -6,6 +6,7 @@ import { Dispatch } from 'redux';
 import { EquipmentActions } from '../../../../redux/actions/equipment.actions';
 import { ModalTemplate } from '../../../../components/Modal/Modal';
 import { ItemModalActions } from '../../../../redux/actions/itemModal.actions';
+import { ModalType } from '../../../../models';
 
 export const ItemModal: FC = () => {
     const { show, position, equipWhat, item } = useSelector(
@@ -66,7 +67,7 @@ export const ItemModal: FC = () => {
     const isArmor = currentItem?.tags.includes('armor');
     const equipable = isArmor || isWeapon;
     return (
-        <ModalTemplate show={show} onClose={handleClose} type="item">
+        <ModalTemplate show={show} onClose={handleClose} type={ModalType.item}>
             <ItemModalComponent
                 item={currentItem}
                 onDrop={handleDrop}

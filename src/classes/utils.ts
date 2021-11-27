@@ -9,7 +9,7 @@ export const generateDescription = (
     tale: string,
     disfigurement: string
 ) => {
-    return `A ${traits[0]} and ${traits[1]} ${className}.\n${habit}.\nIs ${tale} \nYour body is Broken: \n${disfigurement}`;
+    return `A ${traits[0]} and ${traits[1]} ${className}.\n${habit}.\nIs ${tale} \nYour body is Broken: \n\t${disfigurement}`;
 };
 
 export const generateAbilities = (abilities: Ability[]) => {

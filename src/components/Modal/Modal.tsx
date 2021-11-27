@@ -1,10 +1,11 @@
 import { FC } from 'react';
 import Modal from 'react-modal';
 import './Modal.css';
+import { ModalType } from '../../models';
 
 interface ModalProps {
     show: boolean;
-    type?: 'item' | 'attack';
+    type?: ModalType;
     onClose: () => void;
 }
 
@@ -16,10 +17,13 @@ export const ModalTemplate: FC<ModalProps> = ({
 }) => {
     let background: string;
     switch (type) {
-        case 'attack':
+        case ModalType.attack:
             background = 'modal-attack';
             break;
-        case 'item':
+        case ModalType.stat:
+            background = 'modal-stat';
+            break;
+        case ModalType.item:
         default:
             background = 'modal-item';
     }
@@ -30,6 +34,7 @@ export const ModalTemplate: FC<ModalProps> = ({
             className={`modal-background ${background}`}
             onRequestClose={onClose}
             overlayClassName="dark-overlay"
+            appElement={document.getElementById('root') ?? undefined}
         >
             <div className="modal-inner">{children}</div>
         </Modal>

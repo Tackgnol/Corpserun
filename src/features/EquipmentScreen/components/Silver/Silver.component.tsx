@@ -1,10 +1,14 @@
-import { FC } from 'react';
+import { ChangeEvent, FC } from 'react';
 
 interface SilverComponentProps {
     amount: number;
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const SilverComponent: FC<SilverComponentProps> = ({ amount }) => (
+export const SilverComponent: FC<SilverComponentProps> = ({
+    amount,
+    onChange,
+}) => (
     <div className="row align-middle m-1">
         <div className="equipment-header float-start white-outline col-md-5 col-sm-4">
             Equipment
@@ -17,6 +21,7 @@ export const SilverComponent: FC<SilverComponentProps> = ({ amount }) => (
                 <input
                     className="silver-input align-self-center"
                     value={amount}
+                    onChange={onChange}
                 />
             </div>
         </div>

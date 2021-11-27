@@ -6,8 +6,6 @@
     overflow-x: hidden;
     background-repeat: no-repeat;
     background-size: cover;
-    border-image: url("../../assets/Border.png");
-    border-image-width: 20px;
     padding: 0
 }
 
@@ -146,6 +144,7 @@
     font-family: Alegreya;
     font-size: 22px;
     margin-top: 20px;
+    width: 90%;
 }
 
 .item-description {

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Select, { components, ValueType } from 'react-select';
 import './Select.css';
 import indicator from '../../assets/Select/indicator.png';
@@ -18,6 +18,8 @@ const DropdownIndicator = (props: any) => {
 };
 
 export const CustomSelect: FC = () => {
+    const [input, setInput] = useState('');
+    const [value, setValue] = useState<ValueType<Option, false> | null>(null);
     const equipmentDispatch = useDispatch<Dispatch<EquipmentActions>>();
     const stuff = [...data.equipment, ...data.armors, ...data.weapons];
     const items: Option[] = stuff.map((e: Equipment) => ({
@@ -26,7 +28,13 @@ export const CustomSelect: FC = () => {
         data: { ...e },
     }));
     const onChange = (value: ValueType<Option, false>) => {
+        setInput('');
+        setValue(value);
         equipmentDispatch({ type: 'GAIN_ITEM', payload: value?.data });
+        setValue(null);
+    };
+    const onInputChange = (newValue: string) => {
+        setInput(newValue);
     };
 
     return (
@@ -37,8 +45,11 @@ export const CustomSelect: FC = () => {
             placeholder="Add Item"
             options={items}
             onChange={onChange}
+            onInputChange={onInputChange}
             closeMenuOnSelect={true}
             menuPlacement="top"
+            inputValue={input}
+            value={value}
         />
     );
 };

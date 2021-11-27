@@ -142,9 +142,12 @@ export interface ItemModalValues {
     unequipWhat?: EquipableType;
 }
 
-export interface ActionText {
-    header: string;
-    damageText?: string;
-}
-
 export type EquipableType = 'primaryWeapon' | 'secondaryWeapon' | 'armor';
+
+export enum ModalType {
+    attack = 'attack',
+    cast = 'cast',
+    ability = 'ability',
+    stat = 'stat',
+    item = 'item',
+}
