@@ -5,6 +5,7 @@ import InfoReducer from './info.reducer';
 import EquipmentReducer from './equipment.reducer';
 import ItemModalReducer from './itemModal.reducer';
 import ActionModalReducer from './actionModal.reducer';
+import DrawerReducer from './drawer.reducer';
 
 const rootReducer = combineReducers({
     hp: HPReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     equipment: EquipmentReducer,
     itemModal: ItemModalReducer,
     actionModal: ActionModalReducer,
+    drawer: DrawerReducer,
 });
 export type AppState = ReturnType<typeof rootReducer>;
 export default rootReducer;

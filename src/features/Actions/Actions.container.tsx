@@ -12,7 +12,7 @@ import { getModifier } from '../../utils/modifiers';
 import { ModalType } from '../../models';
 
 export const Actions: FC = () => {
-    const { primaryWeapon, secondaryWeapon } = useSelector(
+    const { primaryWeapon, secondaryWeapon, items } = useSelector(
         (state: AppState) => state.equipment
     );
     const { show, header, text, type } = useSelector(
@@ -27,6 +27,7 @@ export const Actions: FC = () => {
     const handleClose = () => {
         actionModalDispatch({ type: 'HIDE_ACTION_MODAL' });
     };
+    const scrolls = items.filter((i) => i.tags.includes('scroll'));
     const actions: CharacterActionProps[] = [];
     if (primaryWeapon) {
         actions.push({
@@ -37,6 +38,7 @@ export const Actions: FC = () => {
                 ? getModifier(strength)
                 : getModifier(presence),
             additionalData: 'primaryWeapon',
+            uses: primaryWeapon.amount?.curr,
         });
     }
     if (secondaryWeapon) {
@@ -48,6 +50,7 @@ export const Actions: FC = () => {
                 ? getModifier(strength)
                 : getModifier(presence),
             additionalData: 'secondaryWeapon',
+            uses: secondaryWeapon.amount?.curr,
         });
     }
     abilities
@@ -82,6 +85,22 @@ export const Actions: FC = () => {
         type: ModalType.stat,
         dice: Dice.d20,
         modifier: getModifier(presence),
+    });
+    actions.push({
+        text: 'Defend',
+        type: ModalType.attack,
+        dice: Dice.d20,
+        modifier: getModifier(agility),
+        additionalData: 'defence',
+    });
+    scrolls.forEach((s) => {
+        actions.push({
+            text: s.name,
+            dice: Dice.d20,
+            modifier: getModifier(presence),
+            type: ModalType.cast,
+            additionalData: s.description,
+        });
     });
     return (
         <ActionsComponent

@@ -1,0 +1,15 @@
+.bar__background {
+    background: rgba(0,0,0,0.41);
+    display: block;
+    pointer-events: none;
+}
+
+.bar__font {
+    font-size: 25px;
+    text-align: center;
+    font-family: MonAmourFraktur-Broken;
+}
+
+.bar__close {
+    pointer-events: auto;
+}

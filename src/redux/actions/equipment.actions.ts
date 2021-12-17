@@ -54,6 +54,19 @@ export interface SetItems {
     payload: Equipment[];
 }
 
+export interface ConsumeCharge {
+    readonly type: 'CONSUME_CHARGE';
+    payload: { equiped: string };
+}
+
+export interface DegradeArmor {
+    readonly type: 'DEGRADE_ARMOR';
+}
+
+export interface FixArmor {
+    readonly type: 'FIX_ARMOR';
+}
+
 export type EquipmentActions =
     | EquipWeapon
     | UnequipWeapon
@@ -65,4 +78,7 @@ export type EquipmentActions =
     | UnequipArmor
     | EquipScroll
     | SetItems
-    | LoseWeapon;
+    | LoseWeapon
+    | DegradeArmor
+    | FixArmor
+    | ConsumeCharge;

@@ -319,40 +319,34 @@ export const descriptions = {
     'tables.equipment.lantern.description':
         ' with oil for {amount, plural, one {1 hour} other {{amount} hours}}',
     'tables.equipment.magnesium-strip': 'Magnesium strip',
-    'tables.equipment.unclean-scroll.1':
-        'Palms Open the Southern Gate (unclean scroll)',
+    'tables.equipment.unclean-scroll.1': 'Palms Open the Southern Gate',
     'tables.equipment.unclean-scroll.1.description':
         ' A ball of fire hits d2 creatures dealing d8 damage per creature',
-    'tables.equipment.unclean-scroll.2': 'Tongue of Eris (unclean scroll)',
+    'tables.equipment.unclean-scroll.2': 'Tongue of Eris',
     'tables.equipment.unclean-scroll.2.description':
         ' A creature of your choice is confused for 10 minutes',
-    'tables.equipment.unclean-scroll.3': 'Te-le-kin-esis (unclean scroll)',
+    'tables.equipment.unclean-scroll.3': 'Te-le-kin-esis',
     'tables.equipment.unclean-scroll.3.description':
         ' Move an object up 1d10 feet for d6 minutes',
-    'tables.equipment.unclean-scroll.4':
-        'Lucy-Fires Levitation (unclean scroll)',
+    'tables.equipment.unclean-scroll.4': 'Lucy-Fires Levitation',
     'tables.equipment.unclean-scroll.4.description':
         ' Hover for Presence + d10 rounds',
-    'tables.equipment.unclean-scroll.5':
-        'Daemon of Capillaries (unclean scroll)',
+    'tables.equipment.unclean-scroll.5': 'Daemon of Capillaries',
     'tables.equipment.unclean-scroll.5.description':
         ' One creature suffocates for d6 rounds, losing d4 HP per round',
-    'tables.equipment.unclean-scroll.6':
-        'Nine Violet Signs Unknot the Storm (unclean scroll)',
+    'tables.equipment.unclean-scroll.6': 'Nine Violet Signs Unknot the Storm',
     'tables.equipment.unclean-scroll.6.description':
         ' Produce d2 lightning bolts dealing d6 damage each',
-    'tables.equipment.unclean-scroll.7':
-        'Metzhuotl Blind Your Eye (unclean scroll)',
+    'tables.equipment.unclean-scroll.7': 'Metzhuotl Blind Your Eye',
     'tables.equipment.unclean-scroll.7.description':
         ' A creature becomes invisible for d6 rounds or until it is damaged, attacking/defending with DR6',
-    'tables.equipment.unclean-scroll.8': 'Foul Psychopomp (unclean scroll)',
+    'tables.equipment.unclean-scroll.8': 'Foul Psychopomp',
     'tables.equipment.unclean-scroll.8.description':
         ' Summon (d6): 1\u20133 d4 skeletons, 4\u20136 d4 zombies',
-    'tables.equipment.unclean-scroll.9':
-        'Eyelid Blinds the Mind (unclean scroll)',
+    'tables.equipment.unclean-scroll.9': 'Eyelid Blinds the Mind',
     'tables.equipment.unclean-scroll.9.description':
         ' d4 creatures fall asleep for one hour unless they succeed a DR14 test',
-    'tables.equipment.unclean-scroll.10': 'Death (unclean scroll)',
+    'tables.equipment.unclean-scroll.10': 'Death',
     'tables.equipment.unclean-scroll.10.description':
         ' All creatures within 30 feet lose a total of 4d10 HP',
     'tables.equipment.sharp-needle': 'Sharp needle',
@@ -371,37 +365,34 @@ export const descriptions = {
     'tables.equipment.life-elixir': 'Life elixir',
     'tables.equipment.life-elixir.description':
         ' {amount, plural, one {1 dose} other {{amount} doses}} (heals d6 HP and removes infection)',
-    'tables.equipment.sacred-scroll.1': 'Grace of a Dead Saint (sacred scroll)',
+    'tables.equipment.sacred-scroll.1': 'Grace of a Dead Saint',
     'tables.equipment.sacred-scroll.1.description':
         ' d2 creatures regain d10 HP each',
-    'tables.equipment.sacred-scroll.2': 'Grace for a Sinner (sacred scroll)',
+    'tables.equipment.sacred-scroll.2': 'Grace for a Sinner',
     'tables.equipment.sacred-scroll.2.description':
         ' A creature of your choice gets +d6 on one roll (damage, test etc.)',
-    'tables.equipment.sacred-scroll.3':
-        'Whispers Pass the Gate (sacred scroll)',
+    'tables.equipment.sacred-scroll.3': 'Whispers Pass the Gate',
     'tables.equipment.sacred-scroll.3.description':
         ' Ask three questions to a deceased creature',
-    'tables.equipment.sacred-scroll.4': 'Aegis of Sorrow (sacred scroll)',
+    'tables.equipment.sacred-scroll.4': 'Aegis of Sorrow',
     'tables.equipment.sacred-scroll.4.description':
         ' A creature of your choice gains 2d6 extra HP for 10 rounds',
-    'tables.equipment.sacred-scroll.5': 'Unmet Fate (sacred scroll)',
+    'tables.equipment.sacred-scroll.5': 'Unmet Fate',
     'tables.equipment.sacred-scroll.5.description':
         ' One creature, dead for no more than a week, is awakened with terrible memories',
-    'tables.equipment.sacred-scroll.6': 'Bestial Speech (sacred scroll)',
+    'tables.equipment.sacred-scroll.6': 'Bestial Speech',
     'tables.equipment.sacred-scroll.6.description':
         ' You may speak with animals for d20 minutes',
-    'tables.equipment.sacred-scroll.7':
-        "False Dawn Night's Chariot (sacred scroll)",
+    'tables.equipment.sacred-scroll.7': "False Dawn Night's Chariot",
     'tables.equipment.sacred-scroll.7.description':
         ' Light or pitch black for 3d10 minutes',
-    'tables.equipment.sacred-scroll.8': 'Hermetic Step (sacred scroll)',
+    'tables.equipment.sacred-scroll.8': 'Hermetic Step',
     'tables.equipment.sacred-scroll.8.description':
         ' You find all traps in your path for 2d10 minutes',
-    'tables.equipment.sacred-scroll.9':
-        "Roskoe's Consuming Glare (sacred scroll)",
+    'tables.equipment.sacred-scroll.9': "Roskoe's Consuming Glare",
     'tables.equipment.sacred-scroll.9.description':
         ' d4 creatures lose d8 HP each',
-    'tables.equipment.sacred-scroll.10': 'Enochian Syntax (sacred scroll)',
+    'tables.equipment.sacred-scroll.10': 'Enochian Syntax',
     'tables.equipment.sacred-scroll.10.description':
         ' One creature blindly obeys a single command',
     'tables.equipment.small-dog': 'Small but vicious dog',
@@ -802,7 +793,7 @@ export const descriptions = {
         'You carry a portable laboratory and continually search for frequently expended ingredients. Daily you have the materials to create two randomly determined decoctions and can brew a total of d4 doses. If unused they lose vitality after 24 hours.',
     'character.classes.occult-herbmaster.power.1.title': 'List of Decoctions',
     'character.classes.occult-herbmaster.power.1.description':
-        "<ol style='font-size:0.8em; columns:2; list-style-position:inside; text-indent: 0em; padding-right:1em; margin-left:-35px;'><li><strong>Red Poison</strong> Toughness DR12 or -d10 HP.</li><li><strong>Ezumiel's Vapor</strong> Pass a DR14 test or severe hallucinations for d4 hours.</li><li><strong>Southern Frog Stew</strong> Vomit for d4 hours, pass a DR14 test or you can do nothing else.</li><li><strong>Elixir Vitalis</strong> Heals d6 HP and stops infection. Can be habit-forming.</li><li><strong>Spider-Owl Soup</strong> See in darkness, climb on walls for 30 minutes.</li><li><strong>Fernor\u2019s Philtre</strong> Translucent oil, must be dabbed right into the eye. Heals infection and gives +2 on Presence tests for d4 hours.</li><li><strong>Hyphos\u2019 Enervating Snuff</strong> Berserk! Two attacks per round but defend with DR14. Lasts one fight. Must be snorted, causes sneezing.</li><li><strong>Black Poison</strong> Toughness DR14 or -d6 HP and blinded for one hour.</li></ol>",
+        "<ol style='font-size:0.8em; columns:2; list-style-position:inside; text-indent: 0; padding-right:1em; margin-left:-35px;'><li><strong>Red Poison</strong> Toughness DR12 or -d10 HP.</li><li><strong>Ezumiel's Vapor</strong> Pass a DR14 test or severe hallucinations for d4 hours.</li><li><strong>Southern Frog Stew</strong> Vomit for d4 hours, pass a DR14 test or you can do nothing else.</li><li><strong>Elixir Vitalis</strong> Heals d6 HP and stops infection. Can be habit-forming.</li><li><strong>Spider-Owl Soup</strong> See in darkness, climb on walls for 30 minutes.</li><li><strong>Fernor\u2019s Philtre</strong> Translucent oil, must be dabbed right into the eye. Heals infection and gives +2 on Presence tests for d4 hours.</li><li><strong>Hyphos\u2019 Enervating Snuff</strong> Berserk! Two attacks per round but defend with DR14. Lasts one fight. Must be snorted, causes sneezing.</li><li><strong>Black Poison</strong> Toughness DR14 or -d6 HP and blinded for one hour.</li></ol>",
     'character.classes.unfortunate-soul': 'Unfortunate Soul',
     'character.classes.unfortunate-soul.power.1.title': 'Wanderlost',
     'character.classes.unfortunate-soul.power.1.description':
@@ -961,7 +952,7 @@ export const descriptions = {
     'character.classes.sacrilegious-songbird.power.spinal-husk.title':
         'Spinal Husk',
     'character.classes.sacrilegious-songbird.power.spinal-husk.description':
-        "When beating this drum made from a hellion's shell, roll 2d6: <ol style='font-size:0.8em; columns:1; list-style:none; text-indent: 0em; padding-right:1em; margin-left:-35px;'><li><strong>6+.</strong> Everyone except you tests Agility against DR14 or falls prone.</li><li><strong>11.</strong> Choose d4 creatures that can hear your drumming. Their spines break like twigs. You cannot use the drum again today.</li><li><strong>12.</strong> Your ears won\u2019t stop ringing; you are deaf for the next 24 hours.</li></ol>Also doubles as a shield.",
+        "When beating this drum made from a hellion's shell, roll 2d6: <ol style='font-size:0.8em; columns:1; list-style:none; text-indent: 0; padding-right:1em; margin-left:-35px;'><li><strong>6+.</strong> Everyone except you tests Agility against DR14 or falls prone.</li><li><strong>11.</strong> Choose d4 creatures that can hear your drumming. Their spines break like twigs. You cannot use the drum again today.</li><li><strong>12.</strong> Your ears won\u2019t stop ringing; you are deaf for the next 24 hours.</li></ol>Also doubles as a shield.",
     'character.classes.sacrilegious-songbird.power.devils-aquifer.title':
         "The Devil's Aquifer",
     'character.classes.sacrilegious-songbird.power.devils-aquifer.description':

@@ -5,10 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/store/store';
 import { Provider } from 'react-redux';
+import { StatusBar } from './components/StatusBar/StatusBar.container';
+import { DrawerButton } from './components/DrawerButton/DrawerButton.container';
+import { Drawer } from './components/Drawer/Drawer.container';
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
+            <Drawer />
+            <DrawerButton />
+            <StatusBar />
             <App />
         </Provider>
     </React.StrictMode>,

@@ -4,10 +4,11 @@
     background-size: contain;
     background-position: center;
     width: 100%;
+    height: 100%;
 }
 
 .actions-header {
-    font-size: 55px;
+    font-size: 40px;
     font-family: MonAmourFraktur-Broken;
     color: white;
 }
@@ -19,21 +20,21 @@
     background-position: center;
     width: 70%;
     margin: auto;
-    min-height: 50px;
+    min-height: 42px;
 
 }
 
 .action-name {
     font-family: Alegreya;
-    font-size: 22px;
+    font-size: 18px;
     align-self: center;
     margin: 10px;
     float: left;
-    line-height: 28px;
+    line-height: 22px;
 }
 
 .action-dice {
-    height: 28px;
+    height: 22px;
     float: right;
     margin: 10px;
 }

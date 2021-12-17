@@ -13,4 +13,9 @@ export interface SetHealth {
     payload: Health;
 }
 
-export type HPActions = TakeDamage | HealDamage | SetHealth;
+export interface SetDizzy {
+    readonly type: 'SET_DIZZY';
+    payload: boolean;
+}
+
+export type HPActions = TakeDamage | HealDamage | SetHealth | SetDizzy;

@@ -74,10 +74,14 @@ const EquipmentReducer = (
                 items: withWeapon,
             };
         case 'EQUIP_ARMOR':
+            const equipableArmor = state.items[action.payload] as Armor;
+            if (!equipableArmor.currentTier) {
+                equipableArmor.currentTier = equipableArmor.maxTier;
+            }
             if (!state.armor) {
                 return {
                     ...state,
-                    armor: state.items[action.payload] as Armor,
+                    armor: equipableArmor,
                     items: state.items.filter(
                         (i, index) => index !== action.payload
                     ),
@@ -86,7 +90,7 @@ const EquipmentReducer = (
                 const withArmor = [...state.items, state.armor];
                 return {
                     ...state,
-                    armor: state.items[action.payload] as Armor,
+                    armor: equipableArmor as Armor,
                     items: withArmor.filter(
                         (i, index) => index !== action.payload
                     ),
@@ -119,9 +123,15 @@ const EquipmentReducer = (
                 ),
             } as PlayerEquipment;
         case 'GAIN_ITEM':
+            const { payload } = action;
+            const amount = payload.amount;
+            if (amount) {
+                amount.curr = amount.max;
+            }
+            const item = { ...payload, amount };
             return {
                 ...state,
-                items: [...state.items, action.payload],
+                items: [...state.items, item],
             };
         case 'UPDATE_SILVER':
             return {
@@ -151,6 +161,44 @@ const EquipmentReducer = (
             return {
                 ...state,
                 secondaryWeapon: null,
+            };
+        }
+        case 'CONSUME_CHARGE': {
+            const { equiped } = action.payload;
+            if (equiped === 'primaryWeapon' || equiped === 'secondaryWeapon') {
+                const item = state[equiped];
+                if (typeof item?.amount?.curr !== 'undefined') {
+                    return {
+                        ...state,
+                        [equiped]: {
+                            ...item,
+                            amount: {
+                                ...item?.amount,
+                                curr:
+                                    item?.amount.curr - 1 > 0
+                                        ? item?.amount.curr - 1
+                                        : 0,
+                            },
+                        },
+                    };
+                }
+            }
+            return { ...state };
+        }
+        case 'DEGRADE_ARMOR': {
+            if (!state.armor) {
+                return { ...state };
+            }
+            const tier = state.armor.currentTier ?? 0;
+            if (tier <= 1) {
+                return { ...state, armor: null };
+            }
+            return {
+                ...state,
+                armor: {
+                    ...state.armor,
+                    currentTier: tier - 1,
+                },
             };
         }
         default:

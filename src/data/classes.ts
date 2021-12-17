@@ -60,7 +60,7 @@ export const classes: CharacterTemplate[] = [
                 description:
                     'DR10 to attack, d6 damage. You must be close to your target. 1\u20132 on d6 chance the enemy gets a free attack.',
                 dice: Dice.d20,
-                difficulty: 10
+                difficulty: 10,
             },
         ],
         randomAbilities: [
@@ -516,14 +516,14 @@ export const classes: CharacterTemplate[] = [
             },
             {
                 name: 'List of Decoctions:',
-                description: `\n* Red Poison - Toughness DR12 or -d10 HP.
-- Ezumiel's Vapor - Pass a DR14 test or severe hallucinations for d4 hours.
-- Southern Frog - Stew Vomit for d4 hours, pass a DR14 test or you can do nothing else.
-- Elixir Vitalis - Heals d6 HP and stops infection. Can be habit-forming.
-- Spider-Owl Soup - See in darkness, climb on walls for 30 minutes.
-- Fernors Philtre - Translucent oil, must be dabbed right into the eye. Heals infection and gives +2 on Presence tests for d4 hours.
-- Hyphoss Enervating Snuff - Berserk! Two attacks per round but defend with DR14. Lasts one fight. Must be snorted, causes sneezing.
-- Black Poison - Toughness DR14 or -d6 HP and blinded for one hour.`,
+                description: `\n\t- Red Poison - Toughness DR12 or -d10 HP.
+\t- Ezumiel's Vapor - Pass a DR14 test or severe hallucinations for d4 hours.
+\t- Southern Frog - Stew Vomit for d4 hours, pass a DR14 test or you can do nothing else.
+\t- Elixir Vitalis - Heals d6 HP and stops infection. Can be habit-forming.
+\t- Spider-Owl Soup - See in darkness, climb on walls for 30 minutes.
+\t- Fernors Philtre - Translucent oil, must be dabbed right into the eye. Heals infection and gives +2 on Presence tests for d4 hours.
+\t- Hyphoss Enervating Snuff - Berserk! Two attacks per round but defend with DR14. Lasts one fight. Must be snorted, causes sneezing.
+\t- Black Poison - Toughness DR14 or -d6 HP and blinded for one hour.`,
             },
         ],
         silver: { dice: [Dice.d6, Dice.d6], modifier: 10 },

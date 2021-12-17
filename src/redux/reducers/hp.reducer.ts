@@ -5,6 +5,7 @@ import { Health } from '../../models';
 const initialState: Health = {
     wounded: false,
     dead: false,
+    dizzy: false,
 };
 const HPReducer = (state: Health = initialState, action: HPActions) => {
     switch (action.type) {
@@ -22,6 +23,11 @@ const HPReducer = (state: Health = initialState, action: HPActions) => {
             return {
                 ...state,
                 ...action.payload,
+            };
+        case 'SET_DIZZY':
+            return {
+                ...state,
+                dizzy: action.payload,
             };
         default:
             return state;

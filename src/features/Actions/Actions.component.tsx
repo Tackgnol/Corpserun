@@ -35,6 +35,7 @@ export const ActionsComponent: FC<ActionsComponentProps> = ({
                     key={a.text}
                     modifier={a.modifier}
                     additionalData={a.additionalData}
+                    uses={a.uses}
                 />
             ))}
             <ActionModal

@@ -11,7 +11,12 @@ export const ArmorComponent: FC<ArmorComponentProps> = ({
     onClick,
 }) => (
     <div className="armor-background" onClick={onClick}>
-        <div className="armor-header white-outline text-end">Armor</div>
+        <div className="armor-header white-outline text-end">
+            Armor
+            {equiped?.currentTier
+                ? ` Tier ${equiped.currentTier} / ${equiped.maxTier}`
+                : null}
+        </div>
         <div className="armor-text white-outline text-end">{equiped?.name}</div>
     </div>
 );

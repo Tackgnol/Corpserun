@@ -12,6 +12,9 @@ export const MainhandComponent: FC<MainhandComponentProps> = ({
 }) => (
     <div className="mainhand-background" onClick={onClick}>
         <div className="mainhand-header white-outline">Mainhand</div>
-        <div className="mainhand-text white-outline">{equiped?.name}</div>
+        <div className="mainhand-text white-outline">
+            {equiped?.name}
+            {equiped?.amount ? `- ammo: ${equiped.amount.curr}` : null}
+        </div>
     </div>
 );

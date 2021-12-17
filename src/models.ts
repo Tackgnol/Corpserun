@@ -49,6 +49,7 @@ export interface Habit extends BaseData {
 export interface Amount {
     min: number;
     max: number;
+    curr?: number;
 }
 
 export interface HP {
@@ -94,6 +95,7 @@ export type Health = {
     currHP?: number;
     wounded: boolean;
     dead: boolean;
+    dizzy?: boolean;
 };
 
 export type Info = {
@@ -118,6 +120,7 @@ export type PlayerEquipment = {
     primaryWeapon: Weapon | null;
     secondaryWeapon: Weapon | null;
     armor: Armor | null;
+
     scrolls: Equipment[];
     items: Equipment[];
     silver: number;

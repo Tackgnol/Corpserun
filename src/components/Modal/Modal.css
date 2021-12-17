@@ -7,6 +7,7 @@
     min-height: 400px;
     margin: auto;
     border: none;
+    z-index: 1;
 }
 
 .modal-inner {
@@ -24,6 +25,7 @@
 .dark-overlay {
     position: fixed;
     inset: 0;
+    z-index: 9999;
     background-color: rgba(0, 0, 0, 0.75);
 }
 
@@ -37,4 +39,13 @@
 
 .modal-stat {
     background: url("../../assets/Modal/Modal_Stat.png");
+}
+
+.modal-cast {
+    background: url("../../assets/Modal/Modal_Scroll.png");
+}
+
+.modal__close {
+    margin-left: auto;
+    margin-bottom: 20px;
 }
