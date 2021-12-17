@@ -4,12 +4,11 @@ import './Actions.css';
 import { ActionsComponent } from './Actions.component';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from '../../redux/reducers/root.reducer';
-import { CharacterActionProps } from './components/CharacterActions/CharacterAction.container';
 import { Dice } from '../../utils/rollDie';
 import { Dispatch } from 'redux';
 import { ActionModalActions } from '../../redux/actions/actionModal.actions';
 import { getModifier } from '../../utils/modifiers';
-import { ModalType } from '../../models';
+import { CharacterAction, ModalType } from '../../models';
 
 export const Actions: FC = () => {
     const { primaryWeapon, secondaryWeapon, items } = useSelector(
@@ -28,7 +27,7 @@ export const Actions: FC = () => {
         actionModalDispatch({ type: 'HIDE_ACTION_MODAL' });
     };
     const scrolls = items.filter((i) => i.tags.includes('scroll'));
-    const actions: CharacterActionProps[] = [];
+    const actions: CharacterAction[] = [];
     if (primaryWeapon) {
         actions.push({
             text: primaryWeapon?.name ?? 'action',
@@ -37,7 +36,7 @@ export const Actions: FC = () => {
             modifier: primaryWeapon.tags.includes('melee')
                 ? getModifier(strength)
                 : getModifier(presence),
-            additionalData: 'primaryWeapon',
+            weaponType: 'primaryWeapon',
             uses: primaryWeapon.amount?.curr,
         });
     }
@@ -49,7 +48,7 @@ export const Actions: FC = () => {
             modifier: secondaryWeapon.tags.includes('melee')
                 ? getModifier(strength)
                 : getModifier(presence),
-            additionalData: 'secondaryWeapon',
+            weaponType: 'secondaryWeapon',
             uses: secondaryWeapon.amount?.curr,
         });
     }
@@ -88,10 +87,9 @@ export const Actions: FC = () => {
     });
     actions.push({
         text: 'Defend',
-        type: ModalType.attack,
+        type: ModalType.defend,
         dice: Dice.d20,
         modifier: getModifier(agility),
-        additionalData: 'defence',
     });
     scrolls.forEach((s) => {
         actions.push({
@@ -99,7 +97,7 @@ export const Actions: FC = () => {
             dice: Dice.d20,
             modifier: getModifier(presence),
             type: ModalType.cast,
-            additionalData: s.description,
+            spellText: s.description,
         });
     });
     return (

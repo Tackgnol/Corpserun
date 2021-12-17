@@ -149,8 +149,22 @@ export type EquipableType = 'primaryWeapon' | 'secondaryWeapon' | 'armor';
 
 export enum ModalType {
     attack = 'attack',
+    defend = 'defend',
     cast = 'cast',
     ability = 'ability',
     stat = 'stat',
     item = 'item',
+}
+
+export interface CharacterAction extends CharacterActionProps {
+    type: ModalType;
+}
+
+export interface CharacterActionProps {
+    text: string;
+    dice: Dice;
+    modifier?: number;
+    weaponType?: 'primaryWeapon' | 'secondaryWeapon';
+    spellText?: string;
+    uses?: number;
 }

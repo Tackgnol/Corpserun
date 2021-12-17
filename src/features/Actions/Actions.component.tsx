@@ -1,14 +1,11 @@
 import { FC } from 'react';
 import { Header } from './components/Header';
-import {
-    CharacterAction,
-    CharacterActionProps,
-} from './components/CharacterActions/CharacterAction.container';
 import { ActionModal } from './components/ActionModal';
-import { ModalType } from '../../models';
+import { CharacterAction, ModalType } from '../../models';
+import { ActionList } from './components/ActionList.component';
 
 interface ActionsComponentProps {
-    actions: CharacterActionProps[];
+    actions: CharacterAction[];
     showModal: boolean;
     closeModal: () => void;
     header: string;
@@ -27,17 +24,7 @@ export const ActionsComponent: FC<ActionsComponentProps> = ({
     return (
         <div className="actions-background">
             <Header />
-            {actions.map((a) => (
-                <CharacterAction
-                    dice={a.dice}
-                    text={a.text}
-                    type={a.type}
-                    key={a.text}
-                    modifier={a.modifier}
-                    additionalData={a.additionalData}
-                    uses={a.uses}
-                />
-            ))}
+            <ActionList actions={actions} />
             <ActionModal
                 show={showModal}
                 header={header}

@@ -19,6 +19,7 @@ export const ModalTemplate: FC<ModalProps> = ({
     let background: string;
     switch (type) {
         case ModalType.attack:
+        case ModalType.defend:
             background = 'modal-attack';
             break;
         case ModalType.stat:
