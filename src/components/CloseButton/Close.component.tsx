@@ -1,17 +1,16 @@
 import { FC } from 'react';
+import close from '../../assets/close.png';
+import './Close.css';
 
 interface CloseProps {
     onClick: () => void;
     className?: string;
 }
 
-export const Close: FC<CloseProps> = ({ onClick, className }) => {
+export const Close: FC<CloseProps> = ({ onClick }) => {
     return (
-        <div
-            className={`action-background button__margins ${className}`}
-            onClick={onClick}
-        >
-            <div className="action-name yellow-outline">Close</div>
+        <div className="close-button top-right ">
+            <img src={close} alt="close" onClick={onClick} />
         </div>
     );
 };

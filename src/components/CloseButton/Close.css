@@ -1,3 +1,19 @@
-.button__margins {
-    margin: 10px auto;
+.close-button {
+    background: rgba(0,0,0,0.41);
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap
+}
+
+.top-right {
+    position: absolute;
+    right: 0;
+    top: 0
 }
