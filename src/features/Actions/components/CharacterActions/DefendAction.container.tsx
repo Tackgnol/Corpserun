@@ -1,32 +1,37 @@
 import { CharacterActionComponent } from './CharacterAction.component';
-import { defend } from '../../utils';
-import { CharacterActionProps, ModalType } from '../../../../models';
+import { CharacterActionProps } from '../../../../models';
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import { EquipmentActions } from '../../../../redux/actions/equipment.actions';
 import { ActionModalActions } from '../../../../redux/actions/actionModal.actions';
 import { AppState } from '../../../../redux/reducers/root.reducer';
+import { useDefence } from '../../../../utils/hooks/useDefence';
+import { Dice } from '../../../../utils/rollDie';
 
 export const DefendActionContainer: FC<CharacterActionProps> = ({
     text,
-    dice,
+    effectDie,
     modifier,
 }) => {
+    const { defend } = useDefence();
     const equipmentDispatch = useDispatch<Dispatch<EquipmentActions>>();
     const actionModalDispatch = useDispatch<Dispatch<ActionModalActions>>();
     const { armor } = useSelector((state: AppState) => state.equipment);
     const handleAbility = () => {
-        const { defenceResult, defenceHeader, degrade } = defend(
-            modifier,
-            armor?.currentTier
+        const { header, text, degrade, rollResult } = defend(
+            modifier ?? 0,
+            armor?.currentTier ?? 0
         );
         actionModalDispatch({
             type: 'SHOW_ACTION_MODAL',
             payload: {
-                header: defenceHeader,
-                text: defenceResult,
-                type: ModalType.attack,
+                header: header,
+                text: text,
+                type: 'defence',
+                rollResult,
+                statistic: 'agility',
+                burn: true,
             },
         });
         if (degrade) {
@@ -35,7 +40,7 @@ export const DefendActionContainer: FC<CharacterActionProps> = ({
     };
     return (
         <CharacterActionComponent
-            dice={dice}
+            effectDie={effectDie ?? Dice.d20}
             text={text}
             useAbility={handleAbility}
         />

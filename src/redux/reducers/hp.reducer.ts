@@ -17,7 +17,7 @@ const HPReducer = (state: Health = initialState, action: HPActions) => {
         case 'HEAL_DAMAGE':
             return {
                 ...state,
-                ...living(1, state.currHP),
+                ...living(action.payload ?? 1, state.currHP),
             };
         case 'SET_HEALTH':
             return {

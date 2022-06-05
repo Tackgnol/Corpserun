@@ -1,16 +1,10 @@
 import React, { FC } from 'react';
-import { Stats } from '../../../../models';
+
 import './Statistics.css';
 import { Statistic } from './Statistic';
 import { OmensComponent } from './Omens.component';
 
-export const Statistics: FC<Omit<Stats, 'maxHP'>> = ({
-    strength,
-    omens,
-    toughness,
-    agility,
-    presence,
-}) => {
+export const Statistics: FC = () => {
     return (
         <div className="statistics-background container">
             <div className="row statistics-split__first">
@@ -38,7 +32,7 @@ export const Statistics: FC<Omit<Stats, 'maxHP'>> = ({
             </div>
             <div className="row justify-content-center">
                 <div className="offset-7 col col-7 statistic-omens">
-                    <OmensComponent count={2} />
+                    <OmensComponent />
                 </div>
             </div>
         </div>

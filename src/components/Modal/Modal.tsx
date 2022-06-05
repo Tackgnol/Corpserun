@@ -18,17 +18,20 @@ export const ModalTemplate: FC<ModalProps> = ({
 }) => {
     let background: string;
     switch (type) {
-        case ModalType.attack:
-        case ModalType.defend:
+        case 'ranged':
+        case 'melee':
             background = 'modal-attack';
             break;
-        case ModalType.stat:
+        case 'defence':
+            background = 'modal-attack';
+            break;
+        case 'test':
+        case 'ability':
             background = 'modal-stat';
             break;
-        case ModalType.cast:
+        case 'cast':
             background = 'modal-cast';
             break;
-        case ModalType.item:
         default:
             background = 'modal-item';
     }
@@ -36,11 +39,12 @@ export const ModalTemplate: FC<ModalProps> = ({
         <Modal
             shouldCloseOnOverlayClick={true}
             isOpen={show}
-            className={`modal-background ${background}`}
+            className={`modal-background`}
             onRequestClose={onClose}
             overlayClassName="dark-overlay"
             appElement={document.getElementById('root') ?? undefined}
         >
+            <div className={`modal-header ${background}`}></div>
             <div className="modal-inner">
                 {children}
                 <Close onClick={onClose} className="modal__close" />

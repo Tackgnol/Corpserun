@@ -9,6 +9,7 @@ interface DescriptionComponentProps {
     textBoxValue: string;
     colClassName: string;
     textBoxClassName: string;
+    borderClassName: string;
     onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
     onTextAreaChange: (
         e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
@@ -20,13 +21,14 @@ export const DescriptionComponent: FC<DescriptionComponentProps> = ({
     textBoxValue,
     colClassName,
     textBoxClassName,
+    borderClassName,
     onTextAreaChange,
     onInputChange,
 }) => {
     return (
         <div className="description-main align-items-center">
             <div className="row">
-                <div className={`${colClassName} offset-xl-5`}>
+                <div className={`${colClassName}`}>
                     <InfoInput
                         id="x"
                         onChange={onInputChange}
@@ -36,7 +38,7 @@ export const DescriptionComponent: FC<DescriptionComponentProps> = ({
                 </div>
             </div>
             <br />
-            <div className="pt-4">
+            <div className={`mt-4 ${borderClassName}`}>
                 <div className={colClassName}>
                     <InfoTextbox
                         id="x"

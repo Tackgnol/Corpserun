@@ -54,6 +54,15 @@ export const classes: CharacterTemplate[] = [
                 name: 'Clumsy and Dull-witted',
                 description:
                     'Agility tests are DR+2, excluding defence. You are incapable of understanding scrolls.',
+                statistic: 'strength',
+                modifiers: [
+                    {
+                        statistic: 'agility',
+                        source: 'Clumsy and dull-witted',
+                        value: -2,
+                        exclude: ['defence'],
+                    },
+                ],
             },
             {
                 name: 'Bite Attack',
@@ -61,6 +70,15 @@ export const classes: CharacterTemplate[] = [
                     'DR10 to attack, d6 damage. You must be close to your target. 1\u20132 on d6 chance the enemy gets a free attack.',
                 dice: Dice.d20,
                 difficulty: 10,
+                effectRoll: Dice.d6,
+                effects: {
+                    1: { text: 'You deal 1 damage and get a free attack' },
+                    2: { text: 'You deal 2 damage and get a free attack' },
+                    3: { text: 'You deal 3 damage' },
+                    4: { text: 'You deal 4 damage' },
+                    5: { text: 'You deal 5 damage' },
+                    6: { text: 'You deal 6 damage' },
+                },
             },
         ],
         randomAbilities: [
@@ -76,6 +94,7 @@ export const classes: CharacterTemplate[] = [
                 description:
                     'A stinking sword you pulled from a military shit-ditch. D6 damage. DR10 attack and defence while you wield it. 1 in 6 chance a wounded enemy is smitten with potent sepsis, dying in 10 minutes.',
                 roll: 2,
+                gainItem: 'The Brown Scimitar of Galgenbeck',
             },
             {
                 name: 'Wizard Teeth',
@@ -88,18 +107,21 @@ export const classes: CharacterTemplate[] = [
                 description:
                     'Sig\xfbrd was the strongest man whose throat you ever gnawed. Woven from his long grey hair, this sling has never failed you. 2d4 damage, requires fist-sized rocks which, perhaps regrettably, are everywhere.',
                 roll: 4,
+                gainItem: `Old Sig\xfbrd's Sling`,
             },
             {
                 name: 'Ancient Gore-Hound',
                 description:
                     'Asthmatic, deluded and on its last legs, this wizened creature still has a superb nose and can snif\ufb02e up treasure in the most disgusting debris. Attacks with DR10 (bite d6). Defends with DR12, 10 HP. Becomes frenzied around goblins and berserkers.',
                 roll: 5,
+                gainPet: 'Ancient Gore-Hound',
             },
             {
                 name: "The Shoe of Death's Horse",
                 description:
                     'It looks normal but since finding it in an obscure crypt you are convinced this shoe came from the horse of Death himself. In your hands it hits with DR10, d4 damage. 1 in 6 chance the shoe smashes the skull, instantly killing small-to-medium sized creatures. The shoe returns to your hand like a boomerang.',
                 roll: 6,
+                gainItem: "The Shoe of Death's Horse",
             },
             {
                 name: 'Man-sized Tower Shield*',
@@ -182,6 +204,18 @@ export const classes: CharacterTemplate[] = [
                 name: 'Stealthy',
                 description:
                     'All Presence and Agility tests have their DR reduced by 2 (normal tests are DR10 instead of DR12).',
+                modifiers: [
+                    {
+                        statistic: 'agility',
+                        source: 'Stealthy',
+                        value: 2,
+                    },
+                    {
+                        statistic: 'presence',
+                        source: 'Stealthy',
+                        value: 2,
+                    },
+                ],
             },
         ],
         randomAbilities: [
@@ -190,6 +224,9 @@ export const classes: CharacterTemplate[] = [
                 description:
                     'When attacking by surprise test Agility DR10. On a success you automatically hit once with a light one-handed weapon, dealing normal damage +3.',
                 dice: Dice.d20,
+                successText:
+                    'You succeed automatically with your attack and have +3 damage (add manually)',
+                failureText: 'You attack as normal',
                 difficulty: 10,
             },
             {
@@ -198,12 +235,19 @@ export const classes: CharacterTemplate[] = [
                     'Your snaky little digits get into pockets and pick locks with a DR8 Agility test. You also begin with lockpicks!',
                 dice: Dice.d20,
                 difficulty: 8,
+                successText:
+                    'You manage to pickpocket a stranger / pick a lock',
+                failureText: 'You fail to pick the lock / pickpocket',
+                gainItem: 'Metal file and lockpicks',
             },
             {
                 name: 'Abominable Gob Lobber',
                 description:
                     'Your phlegm is viscous, lumpy, vile and ballistically accurate at short range. You can spit d2 times during a fight. Roll a DR8 Presence test for accuracy. Targets are blinded, retching and vomiting for d4 rounds. Anyone witnessing this \u2014 friend and foe \u2014 must make a Toughness test to not also vomit. PCs test DR10 and enemies DR12.',
                 dice: Dice.d20,
+                successText:
+                    'Targets are blinded, retching and vomiting for d4 rounds. Anyone witnessing this \u2014 friend and foe \u2014 must make a Toughness test to not also vomit. PCs test DR10 and enemies DR12.',
+                failureText: 'You miss your target',
                 difficulty: 8,
             },
             {
@@ -211,6 +255,8 @@ export const classes: CharacterTemplate[] = [
                 description:
                     'Every time you use an omen there is a 50% chance it is not spent.',
                 dice: Dice.d2,
+                successText: 'Your omen is not spent',
+                failureText: 'Your omen is spent',
                 difficulty: 2,
             },
             {
@@ -222,6 +268,9 @@ export const classes: CharacterTemplate[] = [
                 name: 'Dodging Death',
                 description:
                     'You are so unpleasant, irrelevant, disgusting and vile even Death would rather avoid you if it can. On death, if there is even the slightest possibility that you survived, there is a 50% chance that you did. If successful, after 10 rounds you pop back up with d4 HP and an unlikely explanation of your escape.',
+                successText:
+                    'You survived, you will pop up some weird explanation after 10 rounds',
+                failureText: 'Death catches up to you, you died',
                 dice: Dice.d2,
                 difficulty: 2,
             },
@@ -305,6 +354,7 @@ export const classes: CharacterTemplate[] = [
                 name: 'Hawk as Weapon',
                 description:
                     'Your crafty almost-intelligent hawk is loyal only to you. Even without shared language, you understand its cries as it keeps watch, scouts and swoops to attack foes. Attacks/defence DR10 (claws/bite D4), HP 8.',
+                gainPet: 'Hawk',
             },
         ],
         silver: { dice: [Dice.d6], modifier: 10 },
@@ -356,32 +406,42 @@ export const classes: CharacterTemplate[] = [
             {
                 name: 'The Blade of your Ancestors',
                 description:
-                    "This magnificent and clearly magical talking sword is foppish, unreliable and quietly despises you. It taunts your failures and, if continually disappointed, develops a 1 in 6 chance to \u2018accidentally' attack you or your companions. Deals d6+1 damage. Attack/Defence DR is 10.",
+                    "This magnificent and clearly magical talking sword is foppish, unreliable and quietly despises you. It taunts your failures and, is continually disappointed, develops a 1 in 6 chance to \u2018accidentally' attack you or your companions. Deals d6+1 damage. Attack/Defence DR is 10.",
+                gainItem: 'The Blade of your Ancestors',
             },
             {
                 name: '"Poltroon" the Court Jester',
                 description:
                     "While practically useless, personally irritating and an emotional drain, Poltroon's capering actually makes enemies lose their focus in combat. For the first two rounds you and your allies get +2 on attack/defence.",
+                gainPet: '"Poltroon" the Court Jester',
             },
             {
                 name: 'Barbarister the Incredible Horse',
                 description:
                     'Barbarister is magical, intelligent, arrogant and vain. He can also talk. If you can persuade him to care, Barbarister occasionally adds +2 to Presence tests involving logic and intellect. The horse may be smarter than you and is quite aware of this.',
+                gainPet: 'Barbarister the Incredible Horse',
             },
             {
                 name: 'Hamfund the Squire',
                 description:
                     'This intensely cowardly servant acts only as guardian for the scabbard of the cursed sword Eurekia. Once per combat, if Ham can be found, Eurekia may be drawn. The sword does 2d6 damage, and for every swing of Eurekia roll a d6. On a 1 the squire is slain and Eurekia vanishes forever.',
+                gainPet: 'Hamfund the Squire',
             },
             {
                 name: 'The Snake-Skin Gift',
                 description:
                     'An expensive sandalwood box bound in snakeskin. It contains a seemingly ordinary dagger, wrapped in silk. The dagger does d4 damage but on a 1 the target dies immediately of deadly poison weeping from the blade.',
+                gainItem: 'The Snake-Skin Gift',
             },
             {
                 name: 'Horn of the Schleswig Lords!',
                 description:
                     'Once per day release a blare from this dented old trumpet and test Presence DR12. One creature may make their next non-combat test an automatic success.',
+                dice: Dice.d20,
+                difficulty: 12,
+                successText:
+                    'One creature may make their next non-combat test an automatic success.',
+                failureText: 'You blow your horn but nothing happens...',
             },
         ],
         silver: { dice: [Dice.d6, Dice.d6, Dice.d6, Dice.d6], modifier: 10 },
@@ -440,6 +500,21 @@ export const classes: CharacterTemplate[] = [
                 name: 'Stolen Mitre',
                 description:
                     "While wearing this holy hat the priest's vile body fades, becoming hard to hit in combat (Defence DR10). If pulled over the ears outside of battle the priest becomes nearly invisible, testing stealth against DR8.",
+                modifiers: [
+                    {
+                        statistic: 'agility',
+                        value: 2,
+                        source: 'Stolen Mitre',
+                        exclude: [
+                            'melee',
+                            'ranged',
+                            'ability',
+                            'cast',
+                            'heal',
+                            'test',
+                        ],
+                    },
+                ],
             },
             {
                 name: 'List of Sins',
@@ -449,7 +524,7 @@ export const classes: CharacterTemplate[] = [
             {
                 name: 'The Blasphemous Nechrubel Bible',
                 description:
-                    'So intensely blasphemous even the Priests themselves can only peruse it once per day. When read, roll a die.\\nEven result: For the rest of the day PCs heal d4 HP after just five minutes of rest.\\nOdd result: The priest is plagued by demonic hallucinations. The DM may invent d3 things that only the Priest can see and describe them to the player as if true. This effect ends with sunrise.',
+                    'So intensely blasphemous even the Priests themselves can only peruse it once per day. When read, roll a die.\nEven result: For the rest of the day PCs heal d4 HP after just five minutes of rest.\nOdd result: The priest is plagued by demonic hallucinations. The DM may invent d3 things that only the Priest can see and describe them to the player as if true. This effect ends with sunrise.',
             },
             {
                 name: "Stones taken from Thel-Emas' Lost Temple",
@@ -524,6 +599,41 @@ export const classes: CharacterTemplate[] = [
 \t- Fernors Philtre - Translucent oil, must be dabbed right into the eye. Heals infection and gives +2 on Presence tests for d4 hours.
 \t- Hyphoss Enervating Snuff - Berserk! Two attacks per round but defend with DR14. Lasts one fight. Must be snorted, causes sneezing.
 \t- Black Poison - Toughness DR14 or -d6 HP and blinded for one hour.`,
+                effects: {
+                    1: {
+                        text: 'You gain a Red Poison',
+                        gainItem: 'A bottle of red poison',
+                    },
+                    2: {
+                        text: "You gain Ezumiel's Vapor",
+                        gainItem: 'Ezumiel Vapor',
+                    },
+                    3: {
+                        text: 'You gain Southern Frog',
+                        gainItem: 'Southern Frog Stew',
+                    },
+                    4: {
+                        text: 'You gain a Elixir Vitalis',
+                        gainItem: 'Elixir Vitalis',
+                    },
+                    5: {
+                        text: 'You gain a Spider-Owl Soup',
+                        gainItem: 'Spider-Owl Soup',
+                    },
+                    6: {
+                        text: 'You gain Fernors Philtre',
+                        gainItem: "Fernor's Philtre",
+                    },
+                    7: {
+                        text: 'You gain Hyphoss Enervating Snuff',
+                        gainItem: "Hyphos's Enevating Snuff",
+                    },
+                    8: {
+                        text: 'You gain Black Poison',
+                        gainItem: 'A bottle of black poison',
+                    },
+                },
+                effectRoll: Dice.d8,
             },
         ],
         silver: { dice: [Dice.d6, Dice.d6], modifier: 10 },

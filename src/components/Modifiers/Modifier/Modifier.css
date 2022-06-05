@@ -1,0 +1,23 @@
+.modifier-background {
+    background-image: url("../../../assets/ModifierBackground.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 95%;
+    margin: 10px auto;
+    min-height: 52px;
+}
+
+.modifier-contents {
+    width: 80%;
+    margin: auto;
+    padding-left: 30px;
+    display: flex;
+    color: rgb(255, 233, 0);
+}
+
+.modifier-status {
+    margin: auto;
+    height: 22px;
+    width: 22px;
+}

@@ -7,9 +7,9 @@
 }
 
 .page {
-  overflow: auto;
-  padding: 0px;
-  min-height: 640px;
+    overflow: auto;
+    padding: 0;
+    min-height: 640px;
 }
 
 html  {
@@ -38,11 +38,15 @@ body {
 }
 
 @font-face {
-  font-family: 'MonAmourFraktur-Broken';
-  src: local('MonAmourFraktur-Broken'), url(./assets/fonts/MonAmourFraktur-Broken.ttf) format('truetype');
+    font-family: 'MonAmourFraktur-Broken';
+    src: local('MonAmourFraktur-Broken'), url(./assets/fonts/MonAmourFraktur-Broken.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: 'Alegreya';
-  src: local('Alegreya'), url(./assets/fonts/Alegreya-VariableFont_wght.ttf) format('truetype');
+    font-family: 'Alegreya';
+    src: local('Alegreya'), url(./assets/fonts/Alegreya-VariableFont_wght.ttf) format('truetype');
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
 }

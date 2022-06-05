@@ -1,6 +1,7 @@
 .description-main {
     width: 100%;
     align-items: center;
+
 }
 
 .description-info__top {
@@ -23,3 +24,13 @@
     background: transparent;
     min-height: 320px;
 }
+
+/*.description-borders__bot {*/
+/*    border-right: 6px solid;*/
+/*    border-left: 3px solid;*/
+/*}*/
+
+/*.description-borders__top {*/
+/*    border-right: 4px solid;*/
+/*    border-left: 6px solid;*/
+/*}*/

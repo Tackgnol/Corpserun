@@ -21,10 +21,11 @@ export const TopComponent: FC<TopComponentProps> = ({
             <DescriptionComponent
                 inputValue={name}
                 textBoxValue={description}
-                colClassName="col offset-1 col-12"
+                colClassName="col offset-1 offset-md-2 col-12 col-md-11"
                 textBoxClassName="description-info__top"
                 onTextAreaChange={onTextAreaChange}
                 onInputChange={onInputChange}
+                borderClassName="description-borders__top"
             />
         </div>
     );

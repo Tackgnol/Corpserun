@@ -1,0 +1,66 @@
+.pet-background {
+    background-image: url("../../../../assets/Pets/PetBackground.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 200px;
+    width: 90%;
+    margin: 30px auto;
+}
+
+.pet-content {
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+    font-family: Alegreya;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pet-name {
+    font-family: MonAmourFraktur-Broken;
+    font-size: 32px;
+    text-align: center;
+    float: left;
+    width: 100%;
+}
+
+.pet-description {
+    text-align: center;
+    flex-grow: 1;
+    margin: 10px
+}
+
+.pet-kill {
+    float: right;
+}
+
+.pet-header {
+    justify-content: center;
+    width: 100%;
+    display: flex;
+}
+
+.pet-icon {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+
+.pet-footer {
+    min-height: 50px;
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+
+.pet-health {
+    float: right;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pet-use {
+    float: left;
+}

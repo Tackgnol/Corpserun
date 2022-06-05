@@ -6,8 +6,13 @@ import EquipmentReducer from './equipment.reducer';
 import ItemModalReducer from './itemModal.reducer';
 import ActionModalReducer from './actionModal.reducer';
 import DrawerReducer from './drawer.reducer';
+import PetReducer from './pet.reducer';
+import ModifiersReducer from './modifiers.reducer';
+import StatusReducer from './status.reducer';
+import AmmoReducer from './ammo.reducer';
+import SettingsReducer from './settings.reducer';
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
     hp: HPReducer,
     stats: StatReducer,
     info: InfoReducer,
@@ -15,6 +20,23 @@ const rootReducer = combineReducers({
     itemModal: ItemModalReducer,
     actionModal: ActionModalReducer,
     drawer: DrawerReducer,
+    pets: PetReducer,
+    modifiers: ModifiersReducer,
+    status: StatusReducer,
+    ammo: AmmoReducer,
+    settings: SettingsReducer,
 });
-export type AppState = ReturnType<typeof rootReducer>;
+export type AppState = ReturnType<typeof appReducer>;
+const rootReducer = (state: AppState | undefined, action: any) => {
+    if (action.type === 'KILL') {
+        const settings = state?.settings;
+        const newState = appReducer(undefined, action);
+        if (settings) {
+            newState.settings = settings;
+        }
+        return newState;
+    }
+
+    return appReducer(state, action);
+};
 export default rootReducer;

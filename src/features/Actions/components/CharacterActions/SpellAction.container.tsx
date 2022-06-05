@@ -1,27 +1,26 @@
 import { CharacterActionComponent } from './CharacterAction.component';
-import { castSpell } from '../../utils';
-import { CharacterActionProps, ModalType } from '../../../../models';
+import { CharacterActionProps } from '../../../../models';
 import { FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Dispatch } from 'redux';
 import { ActionModalActions } from '../../../../redux/actions/actionModal.actions';
-import { AppState } from '../../../../redux/reducers/root.reducer';
 import { HPActions } from '../../../../redux/actions/hp.actions';
+import { useSpell } from '../../../../utils/hooks/useSpell';
+import { Dice } from '../../../../utils/rollDie';
 
 export const SpellActionContainer: FC<CharacterActionProps> = ({
     text,
-    dice,
+    effectDie,
     modifier,
     spellText,
 }) => {
     const hpDispatch = useDispatch<Dispatch<HPActions>>();
     const actionModalDispatch = useDispatch<Dispatch<ActionModalActions>>();
-    const { dizzy } = useSelector((state: AppState) => state.hp);
+    const { cast } = useSpell();
     const handleAbility = () => {
-        const { spellHeader, becomeDizzy, spellResult } = castSpell(
+        const { header, becomeDizzy, text, rollResult } = cast(
             spellText,
-            modifier,
-            dizzy
+            modifier
         );
         if (becomeDizzy) {
             hpDispatch({ type: 'SET_DIZZY', payload: true });
@@ -29,15 +28,17 @@ export const SpellActionContainer: FC<CharacterActionProps> = ({
         actionModalDispatch({
             type: 'SHOW_ACTION_MODAL',
             payload: {
-                header: spellHeader,
-                type: ModalType.cast,
-                text: spellResult,
+                header: header,
+                type: 'cast',
+                rollResult,
+                text: text,
+                burn: true,
             },
         });
     };
     return (
         <CharacterActionComponent
-            dice={dice}
+            effectDie={effectDie ?? Dice.d20}
             text={text}
             useAbility={handleAbility}
         />

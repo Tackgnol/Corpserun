@@ -3,18 +3,32 @@ import { Dice } from '../../../../utils/rollDie';
 import { backgroundSelector } from '../../../../components/Dice/backgroundSelector';
 
 interface CharacterActionComponentProps {
-    dice: Dice;
+    effectDie: Dice;
     text: string;
     useAbility: () => void;
     usesLeft?: number;
+    diceOnly?: boolean;
 }
 
 export const CharacterActionComponent: FC<CharacterActionComponentProps> = ({
-    dice,
+    effectDie,
     text,
     useAbility,
     usesLeft,
+    diceOnly = false,
 }) => {
+    if (diceOnly) {
+        return (
+            <div>
+                <img
+                    className="action-dice"
+                    src={backgroundSelector(effectDie)}
+                    alt={String(text)}
+                    onClick={useAbility}
+                />
+            </div>
+        );
+    }
     return (
         <div className="action-background" onClick={useAbility}>
             <div className="action-name yellow-outline">
@@ -22,7 +36,7 @@ export const CharacterActionComponent: FC<CharacterActionComponentProps> = ({
             </div>
             <img
                 className="action-dice"
-                src={backgroundSelector(dice)}
+                src={backgroundSelector(effectDie)}
                 alt={String(text)}
             />
         </div>

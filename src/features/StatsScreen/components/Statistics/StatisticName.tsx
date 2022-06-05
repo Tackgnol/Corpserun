@@ -1,16 +1,25 @@
 import React, { FC } from 'react';
 import './Statistic.css';
+import { TestStatContainer } from '../../../Actions/components/CharacterActions/TestStat.container';
+import { Dice } from '../../../../utils/rollDie';
+import { BaseStats } from '../../../../models';
 
 interface StatisticNameProps {
-    name: string;
+    name: keyof BaseStats;
 }
 
 export const StatisticName: FC<StatisticNameProps> = ({ name }) => {
     return (
-        <div className="col col-7 d-flex justify-content-center statistic-name">
-            <p className="text-right align-self-center statistic-name__field">
-                {name}
-            </p>
+        <div className="col col-7 d-flex statistic-name">
+            {name}
+
+            <TestStatContainer
+                key={name}
+                text={name}
+                effectDie={Dice.d20}
+                statistic={name}
+                showOnlyDie={true}
+            />
         </div>
     );
 };

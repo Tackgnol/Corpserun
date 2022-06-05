@@ -1,33 +1,44 @@
 import { CharacterActionComponent } from './CharacterAction.component';
-import { testStat } from '../../utils';
-import { CharacterActionProps, ModalType } from '../../../../models';
+import { CharacterActionProps } from '../../../../models';
 import { FC } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import { ActionModalActions } from '../../../../redux/actions/actionModal.actions';
+import { useTest } from '../../../../utils/hooks/useTest';
+import { getModifier } from '../../../../utils/modifiers';
+import { AppState } from '../../../../redux/reducers/root.reducer';
+import { Dice } from '../../../../utils/rollDie';
 
 export const TestStatContainer: FC<CharacterActionProps> = ({
     text,
-    dice,
-    modifier,
+    effectDie,
+    statistic,
+    showOnlyDie = false,
 }) => {
     const actionModalDispatch = useDispatch<Dispatch<ActionModalActions>>();
+    const stats = useSelector((state: AppState) => state.stats);
+    const { test } = useTest();
     const handleAbility = () => {
-        const { testResult, testHeader } = testStat(modifier);
+        const modifier = getModifier(stats[statistic]);
+        const { text, header, rollResult } = test(statistic, modifier);
         actionModalDispatch({
             type: 'SHOW_ACTION_MODAL',
             payload: {
-                header: testHeader,
-                text: testResult,
-                type: ModalType.stat,
+                header: header,
+                text,
+                type: 'test',
+                rollResult,
+                statistic: statistic,
+                burn: true,
             },
         });
     };
     return (
         <CharacterActionComponent
-            dice={dice}
+            effectDie={effectDie ?? Dice.d20}
             text={text}
             useAbility={handleAbility}
+            diceOnly={showOnlyDie}
         />
     );
 };

@@ -1,26 +1,28 @@
 import { DrawerActions } from '../actions/drawer.actions';
 
 interface DrawerState {
-    show: boolean;
+    showActionDrawer: boolean;
+    showPetDrawer: boolean;
 }
 
 const initialState = {
-    show: false,
+    showActionDrawer: false,
+    showPetDrawer: false,
 };
 const DrawerReducer = (
     state: DrawerState = initialState,
     action: DrawerActions
 ) => {
     switch (action.type) {
-        case 'SHOW_DRAWER':
+        case 'SHOW_ACTION_DRAWER':
             return {
                 ...state,
-                show: true,
+                showActionDrawer: true,
             };
-        case 'HIDE_DRAWER':
+        case 'HIDE_ACTION_DRAWER':
             return {
                 ...state,
-                show: false,
+                showActionDrawer: false,
             };
         default:
             return state;

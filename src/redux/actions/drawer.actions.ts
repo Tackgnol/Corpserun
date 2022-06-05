@@ -1,9 +1,9 @@
-export interface ShowDrawer {
-    readonly type: 'SHOW_DRAWER';
+export interface ShowActionDrawer {
+    readonly type: 'SHOW_ACTION_DRAWER';
 }
 
-export interface HideDrawer {
-    readonly type: 'HIDE_DRAWER';
+export interface HideActionDrawer {
+    readonly type: 'HIDE_ACTION_DRAWER';
 }
 
-export type DrawerActions = ShowDrawer | HideDrawer;
+export type DrawerActions = ShowActionDrawer | HideActionDrawer;

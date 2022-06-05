@@ -1,63 +1,26 @@
 import './App.css';
 import { InfoScreen } from './features/InfoScreen/InfoScreen.container';
-import { useDispatch } from 'react-redux';
-import { Dispatch } from 'redux';
-import { StatActions } from './redux/actions/stat.actions';
-import { InfoActions } from './redux/actions/info.actions';
-import { EquipmentActions } from './redux/actions/equipment.actions';
-import { rollOnTable } from './utils/rollOnTable';
-import { classes } from './data/classes';
-import { GenerateCharacter } from './classes/GenerateCharacter';
 import { StatScreen } from './features/StatsScreen/StatScreen.container';
 import { EquipmentScreen } from './features/EquipmentScreen';
-import { HPActions } from './redux/actions/hp.actions';
 import { useEffect } from 'react';
+import { About } from './features/About/About.component';
+
+import { classes } from './data/classes';
+import { useCharacter } from './utils/hooks/useCharacterGenerator';
+import { useSelector } from 'react-redux';
+import { AppState } from './redux/reducers/root.reducer';
+
+import { Murder } from './features/Murder/Murder.container';
 
 function App() {
-    const statDispatch = useDispatch<Dispatch<StatActions>>();
-    const infoDispatch = useDispatch<Dispatch<InfoActions>>();
-    const hpDispatch = useDispatch<Dispatch<HPActions>>();
-    const equipmentDispatch = useDispatch<Dispatch<EquipmentActions>>();
+    const { newCharacter } = useCharacter(classes);
+    const { name } = useSelector((state: AppState) => state.info);
     useEffect(() => {
-        const template = rollOnTable(classes);
-        if (template) {
-            const generator = new GenerateCharacter(template);
-            const character = generator.generate();
-            statDispatch({ type: 'SET_STAT', payload: character.stats });
-            infoDispatch({ type: 'SET_NAME', payload: character.info.name });
-            infoDispatch({
-                type: 'SET_DESCRIPTION',
-                payload: `${character.info.description} ${
-                    character.info.classDescription ?? ''
-                }`,
-            });
-            infoDispatch({
-                type: 'SET_ABILITIES',
-                payload: character.abilities ?? [],
-            });
-            infoDispatch({
-                type: 'SET_CLASS_NAME',
-                payload: character.info.characterClass ?? '',
-            });
-            hpDispatch({
-                type: 'SET_HEALTH',
-                payload: {
-                    currHP: character.stats.maxHP,
-                    wounded: false,
-                    dead: false,
-                },
-            });
-            const { equipment } = character;
-            equipmentDispatch({ type: 'SET_ITEMS', payload: equipment });
-            equipmentDispatch({
-                type: 'UPDATE_SILVER',
-                payload: character.silver,
-            });
-        }
+        if (!name) newCharacter();
     });
 
     return (
-        <div className="container g-0">
+        <div className="container g-0 app ">
             <div className="row g-0">
                 <div className="col-12">
                     <StatScreen />
@@ -68,6 +31,12 @@ function App() {
                 <div className="col-sm-12 col-md-12 col-lg-12 col-xl-6 h-auto">
                     <EquipmentScreen />
                 </div>
+            </div>{' '}
+            <div className="row g-0">
+                <Murder />
+            </div>
+            <div className="row g-0">
+                <About />
             </div>
         </div>
     );

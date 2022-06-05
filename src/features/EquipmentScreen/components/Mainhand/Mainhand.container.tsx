@@ -8,6 +8,8 @@ import { Equipment } from '../../../../models';
 
 export const Mainhand: FC = () => {
     const { primaryWeapon } = useSelector((state: AppState) => state.equipment);
+    const { ammo } = useSelector((state: AppState) => state);
+    const itemAmmo = ammo[primaryWeapon?.ammo?.type ?? ''];
     const modalDispatcher = useDispatch<Dispatch<ItemModalActions>>();
     const handleClick = () => {
         modalDispatcher({
@@ -19,5 +21,11 @@ export const Mainhand: FC = () => {
             },
         });
     };
-    return <MainhandComponent onClick={handleClick} equiped={primaryWeapon} />;
+    return (
+        <MainhandComponent
+            onClick={handleClick}
+            equiped={primaryWeapon}
+            ammo={itemAmmo}
+        />
+    );
 };

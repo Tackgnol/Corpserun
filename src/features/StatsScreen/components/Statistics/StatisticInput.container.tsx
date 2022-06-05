@@ -10,9 +10,13 @@ export interface StatisticInputProps {
     id: string;
     tabIndex: number;
     statName: keyof Stats;
+    showModifier?: boolean;
 }
 
-export const StatisticInput: FC<StatisticInputProps> = ({ statName }) => {
+export const StatisticInput: FC<StatisticInputProps> = ({
+    statName,
+    showModifier = true,
+}) => {
     const { stats } = useSelector((state: AppState) => state);
     const statDispatch = useDispatch<Dispatch<StatActions>>();
     const statValue = stats[statName] ?? 0;
@@ -23,5 +27,11 @@ export const StatisticInput: FC<StatisticInputProps> = ({ statName }) => {
             payload: { [statName]: +value },
         } as SetStat);
     };
-    return <StatisticsInput value={statValue} onChange={handleChange} />;
+    return (
+        <StatisticsInput
+            value={statValue}
+            onChange={handleChange}
+            showModifier={showModifier}
+        />
+    );
 };

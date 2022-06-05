@@ -1,0 +1,21 @@
+.about {
+    background: black;
+    font-family: MonAmourFraktur-Broken;
+    font-size: 24px;
+    text-align: center;
+    color: rgb(255, 233, 0);
+}
+
+.about a {
+    color: white;
+}
+
+.compatible {
+    max-width: 300px;
+    max-height: 300px;
+    margin: auto;
+}
+
+.about a:visited {
+    color: rgb(255, 62, 181);
+}

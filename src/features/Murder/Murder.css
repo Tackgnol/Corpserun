@@ -1,0 +1,10 @@
+.murder-background {
+    background: #0e1319;
+    font-family: MonAmourFraktur-Broken;
+    font-size: 23px;
+    color: rgb(255, 233, 0);
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    cursor: pointer;
+}

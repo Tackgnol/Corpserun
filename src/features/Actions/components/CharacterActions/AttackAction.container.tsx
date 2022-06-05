@@ -1,40 +1,62 @@
 import { CharacterActionComponent } from './CharacterAction.component';
-import { attack } from '../../utils';
-import { CharacterActionProps, ModalType } from '../../../../models';
+import { ActionType, CharacterAttackAction } from '../../../../models';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { Dispatch } from 'redux';
 import { EquipmentActions } from '../../../../redux/actions/equipment.actions';
 import { ActionModalActions } from '../../../../redux/actions/actionModal.actions';
+import { Dice, rollDie } from '../../../../utils/rollDie';
+import { useAttack } from '../../../../utils/hooks/useAttack';
+import { AmmoActions } from '../../../../redux/actions/ammo.actions';
 
-export const AttackActionContainer: FC<CharacterActionProps> = ({
+export const AttackActionContainer: FC<CharacterAttackAction> = ({
     text,
-    dice,
+    effectDie,
     modifier,
     uses,
+    ammoType,
     weaponType,
+    effectModifier,
+    damageDie,
+    effects,
+    statistic,
 }) => {
     const equipmentDispatch = useDispatch<Dispatch<EquipmentActions>>();
     const actionModalDispatch = useDispatch<Dispatch<ActionModalActions>>();
+    const ammoDispatch = useDispatch<Dispatch<AmmoActions>>();
+    const type: Extract<ActionType, 'melee' | 'ranged'> =
+        statistic === 'strength' ? 'melee' : 'ranged';
+    const { attack } = useAttack();
     const handleAbility = () => {
-        const { damageHeader, damageText, broken } = attack(
-            dice,
+        const { header, text, broken, rollResult } = attack(
+            damageDie,
+            type,
             modifier,
-            uses
+            uses,
+            effectModifier,
+            effectDie,
+            effects
         );
+        let finalText = text;
+        if (effects && effectDie) {
+            const effectString = effects[rollDie(effectDie)].text;
+            finalText = `${text}\n${effectString}`;
+        }
         actionModalDispatch({
             type: 'SHOW_ACTION_MODAL',
             payload: {
-                header: damageHeader,
-                text: damageText,
-                type: ModalType.attack,
+                header: header,
+                text: finalText,
+                rollResult,
+                type,
+                statistic,
+                burn: true,
             },
         });
-
         if (typeof uses !== 'undefined' && weaponType) {
-            equipmentDispatch({
-                type: 'CONSUME_CHARGE',
-                payload: { equiped: weaponType },
+            ammoDispatch({
+                type: 'DEPLETE_AMMO',
+                payload: ammoType ?? '',
             });
         }
         if (broken) {
@@ -54,7 +76,7 @@ export const AttackActionContainer: FC<CharacterActionProps> = ({
     };
     return (
         <CharacterActionComponent
-            dice={dice}
+            effectDie={effectDie ?? Dice.d20}
             text={text}
             useAbility={handleAbility}
         />

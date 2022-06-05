@@ -1,35 +1,58 @@
 import { FC } from 'react';
 import { Armor, Equipment } from '../../../../models';
-import { CustomSelect } from '../../../../components/Select/Select';
+import { ItemSelect } from '../../../../components/Select/Select';
 
 interface ItemProps {
     item?: Equipment;
+    ammo?: number;
     onClick: () => void;
+    count: number;
 }
 
-export const ItemComponent: FC<ItemProps> = ({ item, onClick }) => {
+export const ItemComponent: FC<ItemProps> = ({
+    item,
+    ammo,
+    onClick,
+    count,
+}) => {
     if (!item) {
         return (
-            <div className="row">
+            <div className="row item-row">
                 <div className="item-background col-12">
-                    <CustomSelect />
+                    <ItemSelect />
                 </div>
             </div>
         );
     }
-    const amount = item.amount ? `(${item.amount.curr})` : undefined;
+
     const asArmor = item as Armor;
-    const tierString = asArmor.currentTier
-        ? `Current tier: ${asArmor.currentTier}`
-        : undefined;
+    const tierString =
+        asArmor.currentTier && count === 1
+            ? `, current tier: ${asArmor.currentTier}`
+            : undefined;
     return (
-        <div className="row">
-            <div className="item-background col-12">
-                <div className="item-title ms-lg-5 ms-3" onClick={onClick}>
+        <div className="row item-row">
+            <div
+                className={`item-background ${
+                    count === 1 ? 'col-12' : 'col-10'
+                } `}
+            >
+                <div
+                    className="item-title ms-3 ms-md-4 ms-xl-4"
+                    onClick={onClick}
+                >
                     {item.name}
-                    {amount} {item.description} {tierString}
+                    {ammo ? ` (${ammo})` : ''}
+                    <br />
+                    {item.description}
+                    {tierString}
                 </div>
             </div>
+            {count > 1 ? (
+                <div className="item-count col-2" onClick={onClick}>
+                    x{count}
+                </div>
+            ) : null}
         </div>
     );
 };

@@ -14,7 +14,9 @@ export const WeaponContainer: FC<WeaponContainerProps> = ({
 
     type,
 }) => {
-    const { equipment } = useSelector((state: AppState) => state);
+    const { equipment, ammo } = useSelector((state: AppState) => state);
+
     const item = equipment[type];
-    return <EquipableComponent id={id} item={item} />;
+    const itemAmmunition = ammo[item?.ammo?.type ?? ''];
+    return <EquipableComponent id={id} item={item} ammo={itemAmmunition} />;
 };

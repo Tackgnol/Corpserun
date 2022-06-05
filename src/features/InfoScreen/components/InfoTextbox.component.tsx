@@ -19,7 +19,7 @@ export const InfoTextbox: FC<InfoTextboxProps> = ({
     return (
         <TextareaAutosize
             id={id}
-            className={className ?? 'description-info'}
+            className={className}
             tabIndex={tabIndex}
             onChange={onChange}
             value={value}

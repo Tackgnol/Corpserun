@@ -6,10 +6,10 @@ import { DrawerActions } from '../../redux/actions/drawer.actions';
 import './Drawer.css';
 
 export const Drawer: FC = () => {
-    const { show } = useSelector((state: AppState) => state.drawer);
+    const { showActionDrawer } = useSelector((state: AppState) => state.drawer);
     const drawerDispatch = useDispatch<Dispatch<DrawerActions>>();
     const handleClose = () => {
-        drawerDispatch({ type: 'HIDE_DRAWER' });
+        drawerDispatch({ type: 'HIDE_ACTION_DRAWER' });
     };
-    return <DrawerComponent show={show} onClick={handleClose} />;
+    return <DrawerComponent show={showActionDrawer} onClick={handleClose} />;
 };

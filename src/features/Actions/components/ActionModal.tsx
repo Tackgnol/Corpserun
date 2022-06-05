@@ -1,20 +1,25 @@
 import { ModalTemplate } from '../../../components/Modal/Modal';
-import { FC } from 'react';
-import { ModalType } from '../../../models';
+import React, { FC } from 'react';
+import { ActionType, BaseStats } from '../../../models';
+import { Modifiers } from '../../../components/Modifiers/Modifiers.container';
 
 interface ActionModalProps {
     show: boolean;
     header: string;
     text?: string;
-    type: ModalType;
+    rollResult?: string;
+    type: ActionType;
+    statistic: keyof BaseStats;
     handleClose: () => void;
 }
 
-export const ActionModal: FC<ActionModalProps> = ({
+export const ActionModalComponent: FC<ActionModalProps> = ({
     show,
     header,
     text,
+    rollResult,
     type,
+    statistic,
     handleClose,
 }) => {
     return (
@@ -24,6 +29,11 @@ export const ActionModal: FC<ActionModalProps> = ({
                     {header}
                 </span>
                 <span className="item-modal-description__big">{text}</span>
+                <Modifiers action={type} stat={statistic} />
+                <div className="item-modal-separator">&nbsp;</div>
+                <span className="item-modal-description__big ">
+                    {rollResult}
+                </span>
             </div>
         </ModalTemplate>
     );

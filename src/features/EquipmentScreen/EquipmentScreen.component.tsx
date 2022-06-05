@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Armor, Mainhand, Offhand } from './components';
-import { Silver } from './components/Silver/Silver.container';
+import { ItemsHeader } from './components/Silver/ItemsHeader.container';
 import { Items } from './components/Items';
 import { ItemModal } from './components/ItemModal/ItemModal.container';
 
@@ -10,7 +10,7 @@ export const EquipmentScreenComponent: FC = () => {
             <Mainhand />
             <Offhand />
             <Armor />
-            <Silver />
+            <ItemsHeader />
             <Items />
             <ItemModal />
         </div>

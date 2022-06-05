@@ -6,6 +6,7 @@ export interface TakeDamage {
 
 export interface HealDamage {
     readonly type: 'HEAL_DAMAGE';
+    payload?: number;
 }
 
 export interface SetHealth {

@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FC } from 'react';
 import { DescriptionComponent } from '../Description/Description.component';
+
 interface BottomComponentProps {
     classDescription: string;
     abilities: string;
@@ -22,12 +23,13 @@ export const BottomComponent: FC<BottomComponentProps> = ({
             <DescriptionComponent
                 inputValue={characterClass ?? ''}
                 textBoxValue={`${
-                    classDescription ? classDescription + '\n' : ''
+                    classDescription ? classDescription + `\n` : ''
                 }${abilities}`}
-                colClassName="col offset-3 col-8"
+                colClassName="col offset-3 offset-sm-4 offset-md-4 col-8 col-md-7"
                 onInputChange={onInputChange}
                 onTextAreaChange={onTextAreaChange}
-                textBoxClassName="description-info__bot"
+                textBoxClassName="description-info__bot mt-md-4"
+                borderClassName="description-borders__bot"
             />
         </div>
     );

@@ -3,7 +3,9 @@ import { getModifier } from '../../utils/modifiers';
 import { Health } from '../../models';
 
 export const rollMaxHP = (toughness: number): number => {
-    return rollDie(Dice.d8) + getModifier(toughness);
+    const hp = rollDie(Dice.d8) + getModifier(toughness);
+
+    return hp > 0 ? hp : 1;
 };
 
 export const living = (diff: number, currentHP?: number): Partial<Health> => {

@@ -1,3 +1,12 @@
-.drawer__background {
-    background: rgba(0,0,0,0.71);
+.drawer-background {
+    background-size: 100% !important;
+    background: rgba(0, 0, 0, 0.71) url("../../assets/Actions/Background.png") no-repeat bottom;
+    max-height: 100vh;
+    overflow: auto;
+}
+
+.tab__text {
+    color: rgb(255, 233, 0);
+    font-family: MonAmourFraktur-Broken;
+    font-size: 24px;
 }

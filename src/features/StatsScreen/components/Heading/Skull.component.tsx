@@ -11,6 +11,7 @@ interface SkullComponentProps {
 
 export const SkullComponent: FC<SkullComponentProps> = ({ maxHP, currHP }) => {
     const hpDispatch = useDispatch<Dispatch<HPActions>>();
+
     const takeDMG = () => {
         hpDispatch({ type: 'TAKE_DAMAGE' });
     };
@@ -28,10 +29,10 @@ export const SkullComponent: FC<SkullComponentProps> = ({ maxHP, currHP }) => {
         >
             <div className="row hp-container">
                 <div
-                    className="col-3 offset-0 col-md-1 offset-md-4 plus"
+                    className="col-3 offset-0 col-md-1 offset-md-3 offset-lg-4 plus"
                     onClick={healDMG}
                 />
-                <div className="col-3 col-md-1">
+                <div className="col-3 offset-md-1 offset-lg-0 col-md-1">
                     <div className="skull-hp yellow-outline left-eye">
                         {currHP}
                     </div>
@@ -41,7 +42,10 @@ export const SkullComponent: FC<SkullComponentProps> = ({ maxHP, currHP }) => {
                         {maxHP}
                     </div>
                 </div>
-                <div className="col-3 minus" onClick={takeDMG} />
+                <div
+                    className="col-3 offset-md-1 offset-lg-0 minus"
+                    onClick={takeDMG}
+                />
             </div>
         </div>
     );

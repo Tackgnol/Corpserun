@@ -1,5 +1,11 @@
 import { Dice } from './utils/rollDie';
 
+export type DiceMode = 'Description' | 'Simulate Roll';
+
+export interface Settings {
+    diceMode: DiceMode;
+}
+
 export interface BaseData {
     name: string;
     exp: boolean;
@@ -12,28 +18,40 @@ export interface GameData {
     tales: Tale[];
     habits: Habit[];
     traits: string[];
+    pets: Pet[];
     body: string[];
 }
 
-export interface Armor extends Equipment {
-    dice: Dice;
+export interface Armor extends Equipment, WithModifiers {
+    dice: Dice[];
     maxTier: number;
     currentTier?: number;
 }
 
-export interface Weapon extends Equipment {
-    dice: Dice;
+export interface Weapon extends Equipment, WithModifiers {
+    dice: Dice[];
+    effectDie?: Dice;
+    effect?: DieEffects;
+    damageModifier?: number;
 }
 
 export interface Equipment extends BaseData {
-    amount?: Amount;
-    mod?: keyof Stats;
+    mod?: keyof BaseStats;
     tags: string[];
-    hp?: HP;
+    hp?: number;
     roll?: number;
     description?: string;
     value?: number;
     count?: number;
+    dice?: Dice[];
+    use?: Use;
+    ammo?: Ammo;
+    multiple?: number;
+}
+
+export interface Ammo {
+    type: string;
+    startWith: number;
 }
 
 export interface Tale extends BaseData {
@@ -77,6 +95,7 @@ export interface CharacterTemplate {
     silver: RollStat;
     hpModifier: Dice;
     roll?: number;
+    statModifiers?: Modifiers;
 }
 
 export interface TemplateStat extends RollStat {
@@ -89,6 +108,8 @@ export interface Character {
     equipment: Equipment[];
     abilities?: Ability[];
     silver: number;
+    pets: Pet[];
+    ammo: { [t: string]: number };
 }
 
 export type Health = {
@@ -107,23 +128,34 @@ export type Info = {
     abilitiesString?: string;
 };
 
-export type Stats = {
+export interface Stats extends BaseStats {
     maxHP: number;
+    maxLoad: number;
+    omens: number;
+}
+
+export interface BaseStats {
     strength: number;
     agility: number;
     presence: number;
     toughness: number;
-    omens: number;
-};
+}
+
+export interface Modifier {
+    statistic: keyof BaseStats;
+    source: string;
+    value: number;
+    exclude?: ActionType[];
+}
 
 export type PlayerEquipment = {
     primaryWeapon: Weapon | null;
     secondaryWeapon: Weapon | null;
     armor: Armor | null;
-
     scrolls: Equipment[];
     items: Equipment[];
     silver: number;
+    currLoad: number;
 };
 
 export type RollStat = {
@@ -132,12 +164,19 @@ export type RollStat = {
     rerolledOn?: number;
 };
 
-export interface Ability {
+export interface Ability extends WithModifiers {
     name: string;
     description: string;
     dice?: Dice;
     difficulty?: number;
     roll?: number;
+    effectRoll?: Dice;
+    effects?: DieEffects;
+    gainItem?: string;
+    gainPet?: string;
+    successText?: string;
+    failureText?: string;
+    statistic?: keyof BaseStats;
 }
 
 export interface ItemModalValues {
@@ -145,26 +184,92 @@ export interface ItemModalValues {
     unequipWhat?: EquipableType;
 }
 
-export type EquipableType = 'primaryWeapon' | 'secondaryWeapon' | 'armor';
-
-export enum ModalType {
-    attack = 'attack',
-    defend = 'defend',
-    cast = 'cast',
-    ability = 'ability',
-    stat = 'stat',
-    item = 'item',
-}
+export type EquipableType = EquippedWeapon | 'armor';
 
 export interface CharacterAction extends CharacterActionProps {
-    type: ModalType;
+    type: ActionType;
 }
 
 export interface CharacterActionProps {
     text: string;
-    dice: Dice;
+    effectDie?: Dice;
     modifier?: number;
-    weaponType?: 'primaryWeapon' | 'secondaryWeapon';
+    effectModifier?: number;
+    successDie?: Dice;
+    successDifficulty?: number;
+    weaponType?: EquippedWeapon;
     spellText?: string;
     uses?: number;
+    ammoType?: string;
+    effects?: DieEffects;
+    damageDie?: Dice[];
+    statistic: keyof BaseStats;
+    showOnlyDie?: boolean;
 }
+
+export interface CharacterAttackAction extends CharacterActionProps {
+    damageDie: Dice[];
+}
+
+export interface Pet extends Equipment, WithModifiers {
+    actionType: Extract<ActionType, 'melee' | 'ranged' | 'buff'>;
+    hp: number;
+    actionDie: Dice[];
+    attackRoll?: number;
+    defenceRoll?: number;
+    buff?: Status;
+    amount?: number | Dice;
+}
+
+export interface Status {
+    name: string;
+    description: string;
+    type: StatusType;
+    last: number | 'unlimited';
+    modifiers: Modifiers;
+}
+
+export interface Use {
+    type: ActionType;
+    value: number | Dice;
+    effectDie?: Dice;
+    effects?: DieEffects;
+    modify?: keyof Stats;
+}
+
+export interface WithModifiers {
+    modifiers?: Modifier[];
+}
+
+export interface DieEffect {
+    text: string;
+    gainItem?: string;
+    statuses?: Status[];
+}
+
+export interface GroupedItems {
+    name: string;
+    position: number;
+    count: number;
+}
+
+export type DieEffects = { [key: number]: DieEffect };
+
+export type EquippedWeapon = 'primaryWeapon' | 'secondaryWeapon';
+
+export type ActionType =
+    | 'melee'
+    | 'ranged'
+    | 'heal'
+    | 'test'
+    | 'cast'
+    | 'ability'
+    | 'defence'
+    | 'buff'
+    | 'item';
+
+export type ModalType = ActionType | 'item';
+
+export type Modifiers = Modifier[];
+
+export type StatusType = 'timed' | 'uses';

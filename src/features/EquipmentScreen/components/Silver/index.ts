@@ -1,1 +1,1 @@
-export * from './Silver.container';
+export * from './ItemsHeader.container';

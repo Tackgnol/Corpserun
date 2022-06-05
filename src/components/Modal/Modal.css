@@ -1,21 +1,18 @@
 .modal-background {
-    background-repeat: no-repeat !important;
-    background-size: 100% 100% !important;
-    background-position: center !important;
     min-width: 320px;
     max-width: 500px;
     min-height: 400px;
-    margin: auto;
     border: none;
     z-index: 1;
+    margin: 60px auto auto;
 }
 
 .modal-inner {
-    padding-bottom: 10px;
-    margin-top: 20%;
-    padding-top: 150px;
     border: none !important;
-
+    background: url("../../assets/Modal/Modal_Body.png");
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+    background-position: center !important;
 }
 
 .modal-background:focus {
@@ -29,20 +26,28 @@
     background-color: rgba(0, 0, 0, 0.75);
 }
 
+.modal-header {
+    min-height: 200px;
+    border: none !important;
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+    margin-bottom: -20px;
+}
+
 .modal-item {
-    background: url("../../assets/Modal/Modal_Item.png");
+    background: url("../../assets/Modal/Modal_Item-Header.png");
 }
 
 .modal-attack {
-    background: url("../../assets/Modal/Modal_Attack.png");
+    background: url("../../assets/Modal/Modal_Attack_Header.png");
 }
 
 .modal-stat {
-    background: url("../../assets/Modal/Modal_Stat.png");
+    background: url("../../assets/Modal/Modal_Stat_Header.png");
 }
 
 .modal-cast {
-    background: url("../../assets/Modal/Modal_Scroll.png");
+    background: url("../../assets/Modal/Modal_Scroll_Header.png");
 }
 
 .modal__close {

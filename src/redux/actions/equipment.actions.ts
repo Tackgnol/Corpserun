@@ -1,4 +1,4 @@
-import { Equipment } from '../../models';
+import { Equipment, EquippedWeapon } from '../../models';
 
 export interface EquipWeapon {
     readonly type: 'EQUIP_WEAPON';
@@ -7,12 +7,12 @@ export interface EquipWeapon {
 
 export interface UnequipWeapon {
     readonly type: 'UNEQUIP_WEAPON';
-    payload: 'primaryWeapon' | 'secondaryWeapon';
+    payload: EquippedWeapon;
 }
 
 export interface LoseWeapon {
     readonly type: 'LOSE_WEAPON';
-    payload: 'primaryWeapon' | 'secondaryWeapon';
+    payload: EquippedWeapon;
 }
 
 export interface DropItem {
@@ -44,19 +44,9 @@ export interface UnequipArmor {
     readonly type: 'UNEQUIP_ARMOR';
 }
 
-export interface EquipScroll {
-    readonly type: 'EQUIP_SCROLL';
-    payload: number;
-}
-
 export interface SetItems {
     readonly type: 'SET_ITEMS';
     payload: Equipment[];
-}
-
-export interface ConsumeCharge {
-    readonly type: 'CONSUME_CHARGE';
-    payload: { equiped: string };
 }
 
 export interface DegradeArmor {
@@ -76,9 +66,7 @@ export type EquipmentActions =
     | UpdateSilver
     | EquipArmor
     | UnequipArmor
-    | EquipScroll
     | SetItems
     | LoseWeapon
     | DegradeArmor
-    | FixArmor
-    | ConsumeCharge;
+    | FixArmor;

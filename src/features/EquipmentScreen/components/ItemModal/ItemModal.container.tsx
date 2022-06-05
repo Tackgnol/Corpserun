@@ -6,7 +6,11 @@ import { Dispatch } from 'redux';
 import { EquipmentActions } from '../../../../redux/actions/equipment.actions';
 import { ModalTemplate } from '../../../../components/Modal/Modal';
 import { ItemModalActions } from '../../../../redux/actions/itemModal.actions';
-import { ModalType } from '../../../../models';
+import { ActionModalActions } from '../../../../redux/actions/actionModal.actions';
+import { useHeal } from '../../../../utils/hooks/useHeal';
+import { AmmoActions } from '../../../../redux/actions/ammo.actions';
+import { rollDie } from '../../../../utils/rollDie';
+import { StatusActions } from '../../../../redux/actions/status.actions';
 
 export const ItemModal: FC = () => {
     const { show, position, equipWhat, item } = useSelector(
@@ -20,9 +24,14 @@ export const ItemModal: FC = () => {
     if (!currentItem && item) {
         currentItem = item;
     }
+
+    const { heal } = useHeal(currentItem);
     const itemDispatch = useDispatch<Dispatch<EquipmentActions>>();
     const modalDispatch = useDispatch<Dispatch<ItemModalActions>>();
-
+    const actionDispatch = useDispatch<Dispatch<ActionModalActions>>();
+    const ammoDispatch = useDispatch<Dispatch<AmmoActions>>();
+    const statusDispatch = useDispatch<Dispatch<StatusActions>>();
+    const consumable = currentItem?.tags.includes('consumable');
     const handleClose = () => {
         modalDispatch({ type: 'HIDE_ITEM_MODAL' });
     };
@@ -61,20 +70,70 @@ export const ItemModal: FC = () => {
         handleClose();
     };
 
+    const handleUse = () => {
+        const type = currentItem?.use?.type;
+        let finalHeader: string = '';
+        let finalText: string = '';
+        switch (type) {
+            case 'heal':
+                const { header, text } = heal();
+                finalText = text;
+                finalHeader = header;
+                break;
+            default:
+                finalHeader = 'You used your item';
+                finalText = currentItem.description ?? '';
+        }
+        if (currentItem?.use?.effectDie && currentItem.use.effects) {
+            const { effects, effectDie } = currentItem.use;
+            const effectRoll = rollDie(effectDie);
+            const statuses = effects[effectRoll]?.statuses;
+            if (statuses) {
+                statuses.forEach((s) => {
+                    statusDispatch({ type: 'ADD_STATUS', payload: s });
+                });
+            }
+        }
+        actionDispatch({
+            type: 'SHOW_ACTION_MODAL',
+            payload: {
+                header: finalHeader,
+                text: finalText,
+                type: currentItem?.use?.type ?? 'item',
+            },
+        });
+        if (currentItem.ammo?.type) {
+            ammoDispatch({
+                type: 'DEPLETE_AMMO',
+                payload: currentItem.ammo.type,
+            });
+        }
+        if (consumable) {
+            itemDispatch({ type: 'DROP_ITEM', payload: index });
+        }
+        handleClose();
+    };
+
     const isWeapon =
         currentItem?.tags.includes('weapon') ||
         currentItem?.tags.includes('shield');
     const isArmor = currentItem?.tags.includes('armor');
     const equipable = isArmor || isWeapon;
+    const usable = currentItem?.tags.includes('usable');
+
     return (
-        <ModalTemplate show={show} onClose={handleClose} type={ModalType.item}>
+        <ModalTemplate show={show} onClose={handleClose} type={'item'}>
             <ItemModalComponent
                 item={currentItem}
                 onDrop={handleDrop}
                 onEquip={handleEquip}
                 onSell={handleSell}
+                onUse={handleUse}
                 equipable={equipable}
                 equiped={index === -1 && typeof equipWhat !== 'undefined'}
+                usable={usable}
+                consumable={consumable}
+                ammoType={currentItem?.ammo?.type}
             />
         </ModalTemplate>
     );

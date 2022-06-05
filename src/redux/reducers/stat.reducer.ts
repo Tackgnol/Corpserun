@@ -3,6 +3,7 @@ import { Stats } from '../../models';
 
 const initialState: Stats = {
     maxHP: 0,
+    maxLoad: 0,
     strength: 0,
     agility: 0,
     presence: 0,
