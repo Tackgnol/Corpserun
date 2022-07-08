@@ -10,7 +10,6 @@ import { ActionModalActions } from '../../../../redux/actions/actionModal.action
 import { useHeal } from '../../../../utils/hooks/useHeal';
 import { AmmoActions } from '../../../../redux/actions/ammo.actions';
 import { rollDie } from '../../../../utils/rollDie';
-import { StatusActions } from '../../../../redux/actions/status.actions';
 
 export const ItemModal: FC = () => {
     const { show, position, equipWhat, item } = useSelector(
@@ -30,7 +29,6 @@ export const ItemModal: FC = () => {
     const modalDispatch = useDispatch<Dispatch<ItemModalActions>>();
     const actionDispatch = useDispatch<Dispatch<ActionModalActions>>();
     const ammoDispatch = useDispatch<Dispatch<AmmoActions>>();
-    const statusDispatch = useDispatch<Dispatch<StatusActions>>();
     const consumable = currentItem?.tags.includes('consumable');
     const handleClose = () => {
         modalDispatch({ type: 'HIDE_ITEM_MODAL' });
@@ -89,9 +87,7 @@ export const ItemModal: FC = () => {
             const effectRoll = rollDie(effectDie);
             const statuses = effects[effectRoll]?.statuses;
             if (statuses) {
-                statuses.forEach((s) => {
-                    statusDispatch({ type: 'ADD_STATUS', payload: s });
-                });
+                statuses.forEach((s) => {});
             }
         }
         actionDispatch({

@@ -933,43 +933,26 @@ export const data: GameData = {
             value: 0,
             use: {
                 type: 'buff',
+                value: 0,
                 effectDie: Dice.d4,
                 effects: {
                     1: {
                         text: '+2 presence for 1 hour',
                         statuses: [
                             {
-                                name: "Fernor's Philtre",
-                                modifiers: [
-                                    {
-                                        statistic: 'presence',
-                                        value: 2,
-                                        source: "Fernor's Philtre",
-                                    },
-                                ],
-                                last: 1,
-                                description:
-                                    "Fernor's Philtre increases your presence",
-                                type: 'timed',
+                                statistic: 'presence',
+                                value: 2,
+                                source: "Fernor's Philtre",
                             },
                         ],
                     },
                     2: {
-                        text: '+2 presence for 2 hours',
+                        text: '+2 presence for 1 hour',
                         statuses: [
                             {
-                                name: "Fernor's Philtre",
-                                modifiers: [
-                                    {
-                                        statistic: 'presence',
-                                        value: 2,
-                                        source: "Fernor's Philtre",
-                                    },
-                                ],
-                                last: 2,
-                                description:
-                                    "Fernor's Philtre increases your presence",
-                                type: 'timed',
+                                statistic: 'presence',
+                                value: 2,
+                                source: "Fernor's Philtre",
                             },
                         ],
                     },
@@ -977,18 +960,9 @@ export const data: GameData = {
                         text: '+2 presence for 3 hours',
                         statuses: [
                             {
-                                name: "Fernor's Philtre",
-                                modifiers: [
-                                    {
-                                        statistic: 'presence',
-                                        value: 2,
-                                        source: "Fernor's Philtre",
-                                    },
-                                ],
-                                last: 3,
-                                description:
-                                    "Fernor's Philtre increases your presence",
-                                type: 'timed',
+                                statistic: 'presence',
+                                value: 2,
+                                source: "Fernor's Philtre",
                             },
                         ],
                     },
@@ -996,24 +970,13 @@ export const data: GameData = {
                         text: '+2 presence for 4 hours',
                         statuses: [
                             {
-                                name: "Fernor's Philtre",
-                                modifiers: [
-                                    {
-                                        statistic: 'presence',
-                                        value: 2,
-                                        source: "Fernor's Philtre",
-                                    },
-                                ],
-                                last: 4,
-                                description:
-                                    "Fernor's Philtre increases your presence",
-                                type: 'timed',
+                                statistic: 'presence',
+                                value: 2,
+                                source: "Fernor's Philtre",
                             },
                         ],
                     },
                 },
-                value: 2,
-                modify: 'presence',
             },
         },
         {
@@ -1026,34 +989,26 @@ export const data: GameData = {
             use: {
                 type: 'buff',
                 effectDie: 1,
+                value: 0,
                 effects: {
                     1: {
                         text: 'You are berserk! Two attack this fight defence is reduced',
                         statuses: [
                             {
-                                name: "Hyphos's Enevating Snuff",
-                                description: 'MURDER MURDER REDRUM REDRUM',
-                                modifiers: [
-                                    {
-                                        statistic: 'agility',
-                                        value: -2,
-                                        source: 'Hyphos snuff',
-                                        exclude: [
-                                            'ability',
-                                            'heal',
-                                            'ranged',
-                                            'melee',
-                                            'cast',
-                                        ],
-                                    },
+                                statistic: 'agility',
+                                value: -2,
+                                source: 'Hyphos snuff',
+                                exclude: [
+                                    'ability',
+                                    'heal',
+                                    'ranged',
+                                    'melee',
+                                    'cast',
                                 ],
-                                type: 'timed',
-                                last: 'unlimited',
                             },
                         ],
                     },
                 },
-                value: 0,
             },
         },
     ],
@@ -1122,27 +1077,22 @@ export const data: GameData = {
             actionType: 'buff',
             actionDie: [],
             tags: ['pet', 'special'],
-            buff: {
-                name: 'Barbaristers guidance',
-                description: 'Barbarister helps you with',
-                last: 1,
-                type: 'uses',
-                modifiers: [
-                    {
-                        statistic: 'presence',
-                        value: 2,
-                        source: 'Barbarister',
-                        exclude: [
-                            'melee',
-                            'ranged',
-                            'cast',
-                            'ability',
-                            'defence',
-                            'buff',
-                        ],
-                    },
-                ],
-            },
+            buff: [
+                {
+                    statistic: 'presence',
+                    value: 2,
+                    source: 'Barbaristers guidence',
+                    exclude: [
+                        'melee',
+                        'ranged',
+                        'cast',
+                        'ability',
+                        'defence',
+                        'buff',
+                    ],
+                },
+            ],
+
             amount: 1,
         },
         {
@@ -1154,56 +1104,50 @@ export const data: GameData = {
             hp: 1,
             exp: false,
             tags: ['pet', 'special'],
-            buff: {
-                name: 'Poltroons annoyance',
-                description: 'Poltroon makes your enemies loose their focus',
-                last: 2,
-                type: 'uses',
-                modifiers: [
-                    {
-                        statistic: 'agility',
-                        value: 2,
-                        source: 'Poltroon',
-                        exclude: [
-                            'melee',
-                            'ranged',
-                            'cast',
-                            'ability',
-                            'test',
-                            'heal',
-                            'buff',
-                        ],
-                    },
-                    {
-                        statistic: 'strength',
-                        value: 2,
-                        source: 'Poltroon',
-                        exclude: [
-                            'defence',
-                            'ranged',
-                            'cast',
-                            'ability',
-                            'test',
-                            'heal',
-                            'buff',
-                        ],
-                    },
-                    {
-                        statistic: 'presence',
-                        value: 2,
-                        source: 'Poltroon',
-                        exclude: [
-                            'defence',
-                            'melee',
-                            'cast',
-                            'ability',
-                            'test',
-                            'heal',
-                            'buff',
-                        ],
-                    },
-                ],
-            },
+            buff: [
+                {
+                    statistic: 'agility',
+                    value: 2,
+                    source: 'Poltroons annoyance',
+                    exclude: [
+                        'melee',
+                        'ranged',
+                        'cast',
+                        'ability',
+                        'test',
+                        'heal',
+                        'buff',
+                    ],
+                },
+                {
+                    statistic: 'strength',
+                    value: 2,
+                    source: 'Poltroons annoyance',
+                    exclude: [
+                        'defence',
+                        'ranged',
+                        'cast',
+                        'ability',
+                        'test',
+                        'heal',
+                        'buff',
+                    ],
+                },
+                {
+                    statistic: 'presence',
+                    value: 2,
+                    source: 'Poltroons annoyance',
+                    exclude: [
+                        'defence',
+                        'melee',
+                        'cast',
+                        'ability',
+                        'test',
+                        'heal',
+                        'buff',
+                    ],
+                },
+            ],
             amount: 1,
         },
     ],

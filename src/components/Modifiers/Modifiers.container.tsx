@@ -25,6 +25,7 @@ export const Modifiers: FC<IModifiersProps> = ({ action, stat }) => {
             statistic: stat,
             source: 'Statistic modifier',
             value: statModifier,
+            cancelable: false,
         });
     }
     return <ModifiersComponent modifiers={allModifiers} />;

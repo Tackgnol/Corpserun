@@ -73,19 +73,18 @@ export const ActionList: FC<ActionListProps> = ({ actions }) => {
                             effects,
                             text,
                         } = a;
-                        if (effects)
-                            return (
-                                <AbilityAction
-                                    key={a.text}
-                                    successDie={successDie}
-                                    successDifficulty={successDifficulty}
-                                    effects={effects}
-                                    text={text}
-                                    effectDie={effectDie}
-                                    statistic={a.statistic}
-                                />
-                            );
-                        return null;
+
+                        return (
+                            <AbilityAction
+                                key={a.text}
+                                successDie={successDie}
+                                successDifficulty={successDifficulty}
+                                effects={effects ?? {}}
+                                text={text}
+                                effectDie={effectDie}
+                                statistic={a.statistic}
+                            />
+                        );
                     default:
                         return null;
                 }

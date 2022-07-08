@@ -6,6 +6,7 @@ import { Close } from '../CloseButton/Close.component';
 import { Pets } from '../../features/Pets/Pets.container';
 
 import 'react-tabs/style/react-tabs.css';
+import { AllModifiers } from '../Modifiers/AllModifiers.container';
 
 interface DrawerComponentProps {
     show: boolean;
@@ -31,6 +32,9 @@ export const DrawerComponent: FC<DrawerComponentProps> = ({
                     <Tab>
                         <span className="tab__text">Pets</span>
                     </Tab>
+                    <Tab>
+                        <span className="tab__text">Modifiers</span>
+                    </Tab>
                 </TabList>
 
                 <TabPanel>
@@ -38,6 +42,9 @@ export const DrawerComponent: FC<DrawerComponentProps> = ({
                 </TabPanel>
                 <TabPanel>
                     <Pets />
+                </TabPanel>
+                <TabPanel>
+                    <AllModifiers />
                 </TabPanel>
             </Tabs>
             <Close onClick={onClick} />

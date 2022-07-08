@@ -6,7 +6,6 @@ import { Dispatch } from 'redux';
 import { PetActions } from '../../../../redux/actions/pet.actions';
 import { useAttack } from '../../../../utils/hooks/useAttack';
 import { ActionModalActions } from '../../../../redux/actions/actionModal.actions';
-import { useStatus } from '../../../../utils/hooks/useStatus';
 
 interface PetProps {
     index: number;
@@ -17,7 +16,6 @@ export const Pet: FC<PetProps> = ({ index, pet }) => {
     const actionModalDispatch = useDispatch<Dispatch<ActionModalActions>>();
     const petDispatch = useDispatch<Dispatch<PetActions>>();
     const { attack } = useAttack();
-    const { applyStatus } = useStatus();
     const handleKill = () => {
         petDispatch({ type: 'LOSE_PET', payload: index });
     };
@@ -35,7 +33,7 @@ export const Pet: FC<PetProps> = ({ index, pet }) => {
         } else {
             const { buff } = pet;
             if (buff) {
-                ({ header, text } = applyStatus(buff));
+                // ({ header, text } = applyStatus(buff));
             }
         }
         actionModalDispatch({

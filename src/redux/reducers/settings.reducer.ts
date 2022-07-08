@@ -2,7 +2,7 @@ import { Settings } from '../../models';
 import { SettingsActions } from '../actions/settings.actions';
 
 const initialState: Settings = {
-    diceMode: 'Description',
+    diceMode: 'Simulate Roll',
 };
 const SettingsReducer = (
     state: Settings = initialState,

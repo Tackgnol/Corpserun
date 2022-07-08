@@ -8,7 +8,6 @@ import ActionModalReducer from './actionModal.reducer';
 import DrawerReducer from './drawer.reducer';
 import PetReducer from './pet.reducer';
 import ModifiersReducer from './modifiers.reducer';
-import StatusReducer from './status.reducer';
 import AmmoReducer from './ammo.reducer';
 import SettingsReducer from './settings.reducer';
 
@@ -22,7 +21,6 @@ const appReducer = combineReducers({
     drawer: DrawerReducer,
     pets: PetReducer,
     modifiers: ModifiersReducer,
-    status: StatusReducer,
     ammo: AmmoReducer,
     settings: SettingsReducer,
 });

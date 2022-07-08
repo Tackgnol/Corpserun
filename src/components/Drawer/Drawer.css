@@ -1,5 +1,5 @@
 .drawer-background {
-    background-size: 100% !important;
+    background-size: 100% 100% !important;
     background: rgba(0, 0, 0, 0.71) url("../../assets/Actions/Background.png") no-repeat bottom;
     max-height: 100vh;
     overflow: auto;

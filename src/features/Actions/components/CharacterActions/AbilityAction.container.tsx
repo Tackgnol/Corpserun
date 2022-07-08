@@ -12,7 +12,6 @@ import { ActionModalActions } from '../../../../redux/actions/actionModal.action
 import { useAbility } from '../../../../utils/hooks/useAbility';
 import { EquipmentActions } from '../../../../redux/actions/equipment.actions';
 import { findItem } from '../../../../classes/utils';
-import { StatusActions } from '../../../../redux/actions/status.actions';
 
 interface AbilityActionProps extends CharacterActionProps {
     successDie?: Dice;
@@ -31,7 +30,6 @@ export const AbilityAction: FC<AbilityActionProps> = ({
 }) => {
     const actionModalDispatch = useDispatch<Dispatch<ActionModalActions>>();
     const equipmentDispatch = useDispatch<Dispatch<EquipmentActions>>();
-    const statusDispatch = useDispatch<Dispatch<StatusActions>>();
     const { ability } = useAbility();
     const handleAbility = () => {
         const { header, text, applyModifiers, gainItem, rollResult } = ability(
@@ -57,7 +55,7 @@ export const AbilityAction: FC<AbilityActionProps> = ({
         }
         if (applyModifiers && applyModifiers.length > 0) {
             applyModifiers.forEach((s) => {
-                statusDispatch({ type: 'ADD_STATUS', payload: s });
+                // statusDispatch();
             });
         }
         actionModalDispatch({

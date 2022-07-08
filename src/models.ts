@@ -146,6 +146,7 @@ export interface Modifier {
     source: string;
     value: number;
     exclude?: ActionType[];
+    cancelable?: boolean;
 }
 
 export type PlayerEquipment = {
@@ -217,16 +218,8 @@ export interface Pet extends Equipment, WithModifiers {
     actionDie: Dice[];
     attackRoll?: number;
     defenceRoll?: number;
-    buff?: Status;
+    buff?: Modifiers;
     amount?: number | Dice;
-}
-
-export interface Status {
-    name: string;
-    description: string;
-    type: StatusType;
-    last: number | 'unlimited';
-    modifiers: Modifiers;
 }
 
 export interface Use {
@@ -244,7 +237,7 @@ export interface WithModifiers {
 export interface DieEffect {
     text: string;
     gainItem?: string;
-    statuses?: Status[];
+    statuses?: Modifiers;
 }
 
 export interface GroupedItems {

@@ -1,13 +1,13 @@
 import { useModifiers } from './useModifiers';
 import { executeAbility } from '../../features/Actions/utils';
 import { Dice, rollDie } from '../rollDie';
-import { BaseStats, DieEffects, Status } from '../../models';
+import { BaseStats, DieEffects, Modifiers } from '../../models';
 
 interface AbilityValues {
     header: string;
     text: string;
     gainItem?: string;
-    applyModifiers?: Status[];
+    applyModifiers?: Modifiers;
     rollResult: string;
 }
 

@@ -1,13 +1,12 @@
 import { Middleware } from 'redux';
 import { RootState } from '../store/store';
-import { Modifier, Status } from '../../models';
+import { Modifier } from '../../models';
 
 interface Modifiers {
     primary: Modifier[] | undefined;
     secondary: Modifier[] | undefined;
     abilities: Modifier[] | undefined;
     armor: Modifier[] | undefined;
-    status: Modifier[] | undefined;
     load: Modifier[] | undefined;
 }
 
@@ -27,7 +26,7 @@ export const modifierMiddleware: Middleware =
     (storeApi) => (next) => (action) => {
         const state = storeApi.getState();
         const modifierList: Modifier[] = [];
-        const { primary, secondary, abilities, armor, status, load } =
+        const { primary, secondary, abilities, armor, load } =
             extractModifiers(state);
         if (primary) {
             modifierList.push(...primary);
@@ -40,9 +39,6 @@ export const modifierMiddleware: Middleware =
         }
         if (armor) {
             modifierList.push(...armor);
-        }
-        if (status) {
-            modifierList.push(...status);
         }
         if (load) {
             modifierList.push(...load);
@@ -67,10 +63,6 @@ const extractModifiers = (state: RootState): Modifiers => {
         secondary: state.equipment.secondaryWeapon?.modifiers,
         abilities: state.info.abilities.map((a) => a.modifiers ?? []).flat(),
         armor: state.equipment?.armor?.modifiers,
-        status: (state.status as Status[])
-            .filter((s) => s.last > 0 || s.last === 'unlimited')
-            .map((s) => s.modifiers ?? [])
-            .flat(),
         load: currLoad > maxLoad ? [hamperAgility, hamperStrength] : undefined,
     };
 };
