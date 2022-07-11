@@ -64,20 +64,6 @@ export interface Habit extends BaseData {
     items: Equipment[];
 }
 
-export interface Amount {
-    min: number;
-    max: number;
-    curr?: number;
-}
-
-export interface HP {
-    min: number;
-    max: number;
-    mod: number;
-}
-
-export type OptionType = { label: string; value: string };
-
 export interface CharacterGenerator {
     generate: () => Character;
 }
@@ -180,11 +166,6 @@ export interface Ability extends WithModifiers {
     statistic?: keyof BaseStats;
 }
 
-export interface ItemModalValues {
-    itemPosition: number;
-    unequipWhat?: EquipableType;
-}
-
 export type EquipableType = EquippedWeapon | 'armor';
 
 export interface CharacterAction extends CharacterActionProps {
@@ -192,7 +173,7 @@ export interface CharacterAction extends CharacterActionProps {
 }
 
 export interface CharacterActionProps {
-    text: string;
+    info: string;
     effectDie?: Dice;
     modifier?: number;
     effectModifier?: number;
@@ -264,5 +245,3 @@ export type ActionType =
 export type ModalType = ActionType | 'item';
 
 export type Modifiers = Modifier[];
-
-export type StatusType = 'timed' | 'uses';

@@ -34,7 +34,7 @@ export const ItemComponent: FC<ItemProps> = ({
         <div className="row item-row">
             <div
                 className={`item-background ${
-                    count === 1 ? 'col-12' : 'col-10'
+                    count === 1 ? 'col-12' : 'col-9'
                 } `}
             >
                 <div

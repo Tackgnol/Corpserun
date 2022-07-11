@@ -15,7 +15,7 @@ export const StatisticName: FC<StatisticNameProps> = ({ name }) => {
 
             <TestStatContainer
                 key={name}
-                text={name}
+                info={name}
                 effectDie={Dice.d20}
                 statistic={name}
                 showOnlyDie={true}

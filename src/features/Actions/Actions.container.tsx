@@ -25,7 +25,7 @@ export const Actions: FC = () => {
         isMelee = primaryWeapon.tags.includes('melee');
         const uses = ammo[primaryWeapon.ammo?.type ?? ''];
         actions.push({
-            text: primaryWeapon?.name ?? 'action',
+            info: primaryWeapon?.name ?? 'action',
             effectDie: primaryWeapon?.effectDie ?? Dice.d20,
             type: isMelee ? 'melee' : 'ranged',
             modifier: isMelee ? getModifier(strength) : getModifier(presence),
@@ -40,7 +40,7 @@ export const Actions: FC = () => {
         isMelee = secondaryWeapon.tags.includes('melee');
         const uses = ammo[secondaryWeapon.ammo?.type ?? ''];
         actions.push({
-            text: secondaryWeapon?.name ?? 'action',
+            info: secondaryWeapon?.name ?? 'action',
             effectDie: secondaryWeapon?.effectDie ?? Dice.d20,
             type: isMelee ? 'melee' : 'ranged',
             modifier: isMelee ? getModifier(strength) : getModifier(presence),
@@ -55,7 +55,7 @@ export const Actions: FC = () => {
         .filter((a) => a.effectRoll)
         .forEach((a) => {
             actions.push({
-                text: a.name,
+                info: a.name,
                 effectDie: a.effectRoll ?? Dice.d6,
                 type: 'ability',
                 effects: a.effects,
@@ -65,7 +65,7 @@ export const Actions: FC = () => {
             });
         });
     actions.push({
-        text: 'Defend',
+        info: 'Defend',
         type: 'defence',
         effectDie: Dice.d20,
         modifier: getModifier(agility),
@@ -73,7 +73,7 @@ export const Actions: FC = () => {
     });
     scrolls.forEach((s) => {
         actions.push({
-            text: s.name,
+            info: s.name,
             effectDie: Dice.d20,
             modifier: getModifier(presence),
             type: 'cast',

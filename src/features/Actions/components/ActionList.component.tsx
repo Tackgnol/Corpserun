@@ -22,16 +22,15 @@ export const ActionList: FC<ActionListProps> = ({ actions }) => {
                         if (a.weaponType) {
                             return (
                                 <AttackActionContainer
-                                    key={a.text}
+                                    key={a.info}
                                     weaponType={a.weaponType}
-                                    text={a.text}
+                                    info={a.info}
                                     effectDie={a.effectDie}
                                     effectModifier={a.effectModifier}
                                     damageDie={a.damageDie ?? [Dice.d4]}
                                     statistic={a.statistic}
                                     uses={a.uses}
                                     ammoType={a.ammoType}
-                                    modifier={a.modifier}
                                 />
                             );
                         }
@@ -39,8 +38,8 @@ export const ActionList: FC<ActionListProps> = ({ actions }) => {
                     case 'defence':
                         return (
                             <DefendActionContainer
-                                key={a.text}
-                                text={a.text}
+                                key={a.info}
+                                info={a.info}
                                 effectDie={a.effectDie}
                                 statistic={a.statistic}
                             />
@@ -49,9 +48,9 @@ export const ActionList: FC<ActionListProps> = ({ actions }) => {
                         const spellText = a.spellText ?? 'You cast your spell!';
                         return (
                             <SpellActionContainer
-                                key={a.text}
+                                key={a.info}
                                 spellText={spellText}
-                                text={a.text}
+                                info={a.info}
                                 effectDie={a.effectDie}
                                 statistic={a.statistic}
                             />
@@ -59,8 +58,8 @@ export const ActionList: FC<ActionListProps> = ({ actions }) => {
                     case 'test':
                         return (
                             <TestStatContainer
-                                key={a.text}
-                                text={a.text}
+                                key={a.info}
+                                info={a.info}
                                 effectDie={a.effectDie}
                                 statistic={a.statistic}
                             />
@@ -71,16 +70,16 @@ export const ActionList: FC<ActionListProps> = ({ actions }) => {
                             successDie,
                             effectDie,
                             effects,
-                            text,
+                            info,
                         } = a;
 
                         return (
                             <AbilityAction
-                                key={a.text}
+                                key={a.info}
                                 successDie={successDie}
                                 successDifficulty={successDifficulty}
                                 effects={effects ?? {}}
-                                text={text}
+                                info={info}
                                 effectDie={effectDie}
                                 statistic={a.statistic}
                             />

@@ -1,7 +1,7 @@
 import { Modifier, Modifiers } from '../../models';
 
-export interface SetModifiers {
-    readonly type: 'SET_MODIFIERS';
+export interface SetPassiveModifiers {
+    readonly type: 'SET_PASSIVE_MODIFIERS';
     payload: Modifiers;
 }
 
@@ -15,4 +15,7 @@ export interface RemoveCustomModifier {
     payload: number;
 }
 
-export type ModifiersActions = SetModifiers;
+export type ModifiersActions =
+    | SetPassiveModifiers
+    | AddCustomModifier
+    | RemoveCustomModifier;

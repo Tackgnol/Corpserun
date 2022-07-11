@@ -170,6 +170,7 @@
 .item-modal-description__big {
     font-family: Alegreya;
     font-size: 35px;
+    padding-bottom: 20px;
 }
 
 .item-modal-description__small {

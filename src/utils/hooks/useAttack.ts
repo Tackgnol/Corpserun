@@ -14,7 +14,6 @@ interface UseAttack {
     attack: (
         dice: Dice[],
         type: Extract<ActionType, 'melee' | 'ranged'>,
-        modifier?: number,
         ammo?: number,
         damageModifier?: number,
         effectDie?: Dice,
@@ -28,13 +27,11 @@ export const useAttack = (): UseAttack => {
     const attack = (
         dice: Dice[],
         type: Extract<ActionType, 'melee' | 'ranged'>,
-        modifier = 0,
         ammo?: number,
         damageModifier = 0
     ): AttackValues => {
         const roll = rollDie(Dice.d20);
-        const withModifier = roll + modifier;
-        const finalRoll = withModifier + calculateAction(withModifier, type);
+        const finalRoll = roll + calculateAction(type);
         return executeAttack(dice, roll, finalRoll, ammo, damageModifier);
     };
     return { attack };

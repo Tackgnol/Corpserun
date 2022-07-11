@@ -10,9 +10,8 @@ import { useAttack } from '../../../../utils/hooks/useAttack';
 import { AmmoActions } from '../../../../redux/actions/ammo.actions';
 
 export const AttackActionContainer: FC<CharacterAttackAction> = ({
-    text,
+    info,
     effectDie,
-    modifier,
     uses,
     ammoType,
     weaponType,
@@ -31,7 +30,6 @@ export const AttackActionContainer: FC<CharacterAttackAction> = ({
         const { header, text, broken, rollResult } = attack(
             damageDie,
             type,
-            modifier,
             uses,
             effectModifier,
             effectDie,
@@ -77,7 +75,7 @@ export const AttackActionContainer: FC<CharacterAttackAction> = ({
     return (
         <CharacterActionComponent
             effectDie={effectDie ?? Dice.d20}
-            text={text}
+            text={info}
             useAbility={handleAbility}
         />
     );

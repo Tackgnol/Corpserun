@@ -1,6 +1,7 @@
 import { Middleware } from 'redux';
 import { RootState } from '../store/store';
-import { Modifier } from '../../models';
+import { BaseStats, Modifier } from '../../models';
+import { getModifier } from '../../utils/modifiers';
 
 interface Modifiers {
     primary: Modifier[] | undefined;
@@ -25,6 +26,13 @@ const hamperAgility: Modifier = {
 export const modifierMiddleware: Middleware =
     (storeApi) => (next) => (action) => {
         const state = storeApi.getState();
+        const statValues = state.stats;
+        const stats: (keyof BaseStats)[] = [
+            'strength',
+            'agility',
+            'presence',
+            'toughness',
+        ];
         const modifierList: Modifier[] = [];
         const { primary, secondary, abilities, armor, load } =
             extractModifiers(state);
@@ -43,11 +51,23 @@ export const modifierMiddleware: Middleware =
         if (load) {
             modifierList.push(...load);
         }
+
+        const statModifiers = stats.map((s) => {
+            return {
+                statistic: s,
+                source: 'Statistic modifier',
+                value: getModifier(statValues[s]),
+                cancelable: false,
+            };
+        });
         if (
-            action.type !== 'SET_MODIFIERS' &&
+            action.type !== 'SET_PASSIVE_MODIFIERS' &&
             state.modifiers.length !== modifierList.length
         ) {
-            storeApi.dispatch({ type: 'SET_MODIFIERS', payload: modifierList });
+            storeApi.dispatch({
+                type: 'SET_PASSIVE_MODIFIERS',
+                payload: [...modifierList, ...statModifiers],
+            });
         }
         return next(action);
     };

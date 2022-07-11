@@ -9,19 +9,16 @@ import { useSpell } from '../../../../utils/hooks/useSpell';
 import { Dice } from '../../../../utils/rollDie';
 
 export const SpellActionContainer: FC<CharacterActionProps> = ({
-    text,
+    info,
     effectDie,
-    modifier,
+    statistic,
     spellText,
 }) => {
     const hpDispatch = useDispatch<Dispatch<HPActions>>();
     const actionModalDispatch = useDispatch<Dispatch<ActionModalActions>>();
     const { cast } = useSpell();
     const handleAbility = () => {
-        const { header, becomeDizzy, text, rollResult } = cast(
-            spellText,
-            modifier
-        );
+        const { header, becomeDizzy, text, rollResult } = cast(spellText);
         if (becomeDizzy) {
             hpDispatch({ type: 'SET_DIZZY', payload: true });
         }
@@ -33,13 +30,14 @@ export const SpellActionContainer: FC<CharacterActionProps> = ({
                 rollResult,
                 text: text,
                 burn: true,
+                statistic,
             },
         });
     };
     return (
         <CharacterActionComponent
             effectDie={effectDie ?? Dice.d20}
-            text={text}
+            text={info}
             useAbility={handleAbility}
         />
     );

@@ -12,16 +12,15 @@ interface SpellValues {
 }
 
 interface UseSpell {
-    cast: (spellEffect?: string, presenceModifier?: number) => SpellValues;
+    cast: (spellEffect?: string) => SpellValues;
 }
 
 export const useSpell = (): UseSpell => {
     const { calculateAction } = useModifiers();
     const { dizzy } = useSelector((state: AppState) => state.hp);
-    const cast = (spellEffect?: string, presenceModifier = 0) => {
+    const cast = (spellEffect?: string) => {
         const roll = rollDie(Dice.d20);
-        const withModifier = roll + presenceModifier;
-        const finalRoll = withModifier + calculateAction(withModifier, 'cast');
+        const finalRoll = roll + calculateAction('cast');
         return castSpell(roll, finalRoll, spellEffect, dizzy);
     };
     return { cast };

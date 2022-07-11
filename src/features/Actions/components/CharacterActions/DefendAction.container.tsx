@@ -10,7 +10,7 @@ import { useDefence } from '../../../../utils/hooks/useDefence';
 import { Dice } from '../../../../utils/rollDie';
 
 export const DefendActionContainer: FC<CharacterActionProps> = ({
-    text,
+    info,
     effectDie,
     modifier,
 }) => {
@@ -20,7 +20,6 @@ export const DefendActionContainer: FC<CharacterActionProps> = ({
     const { armor } = useSelector((state: AppState) => state.equipment);
     const handleAbility = () => {
         const { header, text, degrade, rollResult } = defend(
-            modifier ?? 0,
             armor?.currentTier ?? 0
         );
         actionModalDispatch({
@@ -41,7 +40,7 @@ export const DefendActionContainer: FC<CharacterActionProps> = ({
     return (
         <CharacterActionComponent
             effectDie={effectDie ?? Dice.d20}
-            text={text}
+            text={info}
             useAbility={handleAbility}
         />
     );

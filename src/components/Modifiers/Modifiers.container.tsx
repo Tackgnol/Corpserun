@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { AppState } from '../../redux/reducers/root.reducer';
 import { ActionType, BaseStats } from '../../models';
 import { ModifiersComponent } from './Modifiers.component';
-import { getModifier } from '../../utils/modifiers';
 
 interface IModifiersProps {
     action: ActionType;
@@ -11,22 +10,13 @@ interface IModifiersProps {
 }
 
 export const Modifiers: FC<IModifiersProps> = ({ action, stat }) => {
-    let allModifiers = useSelector((state: AppState) => state.modifiers);
-    const stats = useSelector((state: AppState) => state.stats);
+    let { passive } = useSelector((state: AppState) => state.modifiers);
     if (stat) {
-        allModifiers = allModifiers.filter((m) => m.statistic === stat);
+        passive = passive.filter((m) => m.statistic === stat);
     }
     if (action) {
-        allModifiers = allModifiers.filter((m) => !m.exclude?.includes(action));
+        passive = passive.filter((m) => !m.exclude?.includes(action));
     }
-    const statModifier = getModifier(stats[stat]);
-    if (statModifier) {
-        allModifiers.push({
-            statistic: stat,
-            source: 'Statistic modifier',
-            value: statModifier,
-            cancelable: false,
-        });
-    }
-    return <ModifiersComponent modifiers={allModifiers} />;
+    passive = passive.filter((m) => m.value !== 0);
+    return <ModifiersComponent modifiers={passive} />;
 };

@@ -24,7 +24,7 @@ export const AbilityAction: FC<AbilityActionProps> = ({
     successDifficulty,
     effects,
     effectDie,
-    text,
+    info,
     modifier,
     statistic,
 }) => {
@@ -74,7 +74,7 @@ export const AbilityAction: FC<AbilityActionProps> = ({
     return (
         <CharacterActionComponent
             effectDie={effectDie ?? Dice.d20}
-            text={text}
+            text={info}
             useAbility={handleAbility}
         />
     );

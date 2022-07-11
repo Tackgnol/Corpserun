@@ -10,7 +10,7 @@ import { AppState } from '../../../../redux/reducers/root.reducer';
 import { Dice } from '../../../../utils/rollDie';
 
 export const TestStatContainer: FC<CharacterActionProps> = ({
-    text,
+    info,
     effectDie,
     statistic,
     showOnlyDie = false,
@@ -36,7 +36,7 @@ export const TestStatContainer: FC<CharacterActionProps> = ({
     return (
         <CharacterActionComponent
             effectDie={effectDie ?? Dice.d20}
-            text={text}
+            text={info}
             useAbility={handleAbility}
             diceOnly={showOnlyDie}
         />

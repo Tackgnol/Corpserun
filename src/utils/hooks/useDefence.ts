@@ -10,16 +10,14 @@ interface DefenceValues {
 }
 
 interface UseDefence {
-    defend: (modifier: number, tier: number) => DefenceValues;
+    defend: (tier: number) => DefenceValues;
 }
 
 export const useDefence = (): UseDefence => {
     const { calculateAction } = useModifiers();
-    const defend = (modifier: number, tier: number) => {
+    const defend = (tier: number) => {
         const roll = rollDie(Dice.d20);
-        const withModifier = roll + modifier;
-        const finalRoll =
-            withModifier + calculateAction(withModifier, 'defence');
+        const finalRoll = roll + calculateAction('defence');
         return executeDefend(roll, finalRoll, tier);
     };
     return {

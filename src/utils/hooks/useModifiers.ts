@@ -4,14 +4,17 @@ import { AppState } from '../../redux/reducers/root.reducer';
 
 interface UseModifiers {
     modifiers: Modifiers;
-    calculateAction: (value: number, action: ActionType) => number;
+    calculateAction: (action: ActionType) => number;
     calculateStatTest: (value: number, statistic: keyof BaseStats) => number;
     calculateAbility: (value: number, statistic?: keyof BaseStats) => number;
 }
 
 export const useModifiers = (): UseModifiers => {
-    const { modifiers } = useSelector((state: AppState) => state);
-    const calculateAction = (value: number, action: ActionType): number => {
+    const { passive, buffs } = useSelector(
+        (state: AppState) => state.modifiers
+    );
+    const modifiers = [...passive, ...buffs];
+    const calculateAction = (action: ActionType): number => {
         let filteredModifiers: Modifiers = [];
         switch (action) {
             case 'defence':

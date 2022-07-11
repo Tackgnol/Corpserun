@@ -23,7 +23,7 @@
 }
 
 .modifier-stat {
-    top: -5px;
+    top: -10px;
     left: 10%;
     width: 110px;
     background-image: url("../../../../src/assets/StatValue.png");
